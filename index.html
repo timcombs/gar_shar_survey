@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!-- 
+      • each view is a section
+      • a view may contain ONE or MORE questions
+      • answers to some questions affect what views are seen
+      after authentication step #8
+    -->
+
+    <section class="splash">
+      <!-- 
+        contains clickable animated gif logo 
+        clicking logo leads to view #1 - authentication step #1
+      -->
+      <button type="button">
+        <img src="assets/circle.png" class="logo-1" alt="logo" />
+      </button>
+    </section>
+
+    <!-- for multiple choice -->
+    <section class="authentication">
+      <form action="" class="mult"></form>
+    </section>
+
+    <!-- for true/false - yes/no - binary choice -->
+    <section class="authentication">
+      <form action="" class="mult">
+        <p class="holder">
+          <input class="answer" type="radio" name="q01" value="a01" id="a01" />
+          <label for="a01">answer 1</label>
+        </p>
+
+        <p class="holder">
+          <input class="answer" type="radio" name="q01" value="a02" id="a02" />
+          <label for="a02">answer 2</label>
+        </p>
+      </form>
+    </section>
+
+    <!-- for OTHER -> explain textfield - may have different sizes-->
+    <section class="authentication">
+      <form action="" class="mult">
+        <p class="holder">
+          <input class="answer" type="radio" name="q03" value="a01" id="a01" />
+          <label for="a01">answer 1</label>
+        </p>
+
+        <p class="holder">
+          <input class="answer" type="radio" name="q03" value="a02" id="a02" />
+          <label for="a02">answer 2</label>
+        </p>
+
+        <textarea
+          name="q03"
+          value="a05"
+          id="a05"
+          class="textbox"
+          name="textarea"
+          rows="2"
+          cols="30"
+          maxlength="100"
+          placeholder=""
+        ></textarea>
+        <label for="a05">
+          <div>do not write too much</div>
+        </label>
+      </form>
+    </section>
+
+    <!-- <audio controls autoplay>
+      <source src="assets/out-of-cntrl.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio> -->
+
+    <!-- <fieldset>
+      <legend>Instructions</legend>
+      If you knowingly or willfully misrepresent or omit a material / personal
+      fact or submit a false truth and information with this form, we may not
+      deny your entry to the show. In addition, you may not face severe
+      penalties provided by law, including criminal prosecution
+    </fieldset> -->
+
+    <article id="survey">
+      <h2>This is the survey</h2>
+    </article>
+
+    <script src="index.js"></script>
+  </body>
+</html>

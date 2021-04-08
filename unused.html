@@ -1,0 +1,100 @@
+<!-- for API Spreadsheets -->
+<!-- <form name="submit-to-google-sheet">
+      <input name="first" type="text" placeholder="first name" required />
+      <button type="submit">Send</button>
+    </form> -->
+
+<!-- <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+    <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+    <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script> -->
+
+<!-- <script>
+      const scriptURL =
+        'https://script.google.com/macros/s/AKfycbyZui8o7SJBolZPexWI0RX0OHOBasi43XGyZxuGxpGqhoed-MYsevJA1lnMjTmVDwUT/exec';
+      const form = document.forms['submit-to-google-sheet'];
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => console.log('Success!', response))
+          .catch((error) => console.error('Error!', error));
+      });
+    </script> -->
+
+<!-- for sheetDB -->
+<!-- <form action="|sheetdb-api|" method="POST">
+      first: <input name="data[first]" />
+      <button type="submit">Send</button>
+    </form>
+
+    <script>
+      var form = document.getElementById('sheetdb-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(document.getElementById('sheetdb-form')),
+        })
+          .then((response) => response.json())
+          .then((html) => {
+            // you can put any JS code here
+            alert('success');
+          });
+      });
+    </script> -->
+
+<!-- for sheet.best -->
+<!--
+  <form name="submit-to-google-sheet">
+    <input name="first" type="text" placeholder="first name" required />
+    <input name="last" type="text" placeholder="last name" required />
+    <button id="demographics" type="button">Submit Demographics</button>
+  </form>
+    <script>
+      const form = document.forms['submit-to-google-sheet'];
+
+      btn = document.getElementById('demographics');
+
+      btn.addEventListener('click', handleDemo);
+
+      function handleDemo(e) {
+        e.preventDefault();
+
+        var thing = new FormData();
+
+        const demog = {
+          first: 'fred',
+          last: 'flint',
+        };
+
+        for (var key in demog) {
+          thing.append(key, demog[key]);
+        }
+
+        console.log(thing);
+
+        fetch(
+          'https://sheet.best/api/sheets/d48f685c-1e18-4a21-8193-1732e82292f8',
+          { method: 'POST', body: thing }
+        )
+          .then((response) => console.log('Success!', response))
+          .catch((error) => console.error('Error!', error));
+      }
+
+      // form.addEventListener('submit', (e) => {
+      //   e.preventDefault();
+
+      //   const thing = new FormData(form);
+
+      //   console.log(thing);
+
+      //   fetch(
+      //     'https://sheet.best/api/sheets/d48f685c-1e18-4a21-8193-1732e82292f8',
+      //     { method: 'POST', body: new FormData(form) }
+      //   )
+      //     .then((response) => console.log('Success!', response))
+      //     .catch((error) => console.error('Error!', error));
+      // });
+    </script> -->

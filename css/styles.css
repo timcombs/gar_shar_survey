@@ -1,0 +1,59 @@
+html {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* for the fancy radio buttons! */
+input[type='radio'] {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border: unset;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  vertical-align: -2px;
+  /* Set here so that Windows' High-Contrast Mode can override */
+  background-color: red;
+}
+
+input[type='radio']::before {
+  display: block;
+  content: ' ';
+  width: 1em;
+  height: 1em;
+  background-color: black;
+  font-size: 1em;
+  transform: translate(1px, 1px) scale(0);
+  transform-origin: center;
+  transition: all 0.3s ease-in;
+  padding: 1px 0 0 1px;
+  visibility: hidden;
+}
+
+input[type='radio']:checked::before {
+  transform: translate(0, 0) scale(1);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.56, 2);
+  visibility: visible;
+}
+
+/* for text areas */
+textarea {
+  resize: none;
+}
+
+.question {
+  background-color: rgb(238, 246, 247);
+  padding: 10px;
+  border-radius: 5px;
+  width: 85%;
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+/* for opening and closing page */
+.splash {
+}
+
+.authentication {
+}
