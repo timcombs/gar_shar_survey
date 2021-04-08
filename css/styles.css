@@ -3,6 +3,11 @@ html {
   font-family: 'Times New Roman', Times, serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* for the fancy radio buttons! */
 input[type='radio'] {
   position: relative;
@@ -38,7 +43,7 @@ input[type='radio']:checked::before {
 }
 
 /* for text areas */
-textarea {
+.textbox {
   resize: none;
 }
 
@@ -53,7 +58,33 @@ textarea {
 
 /* for opening and closing page */
 .splash {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
 }
 
 .authentication {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }

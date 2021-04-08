@@ -16,70 +16,123 @@
       after authentication step #8
     -->
 
-    <section class="splash">
-      <!-- 
-        contains clickable animated gif logo 
-        clicking logo leads to view #1 - authentication step #1
-      -->
-      <button type="button">
+    <!-- 
+      contains clickable animated gif logo 
+      clicking logo leads to view #1 - authentication step #1
+    -->
+    <section class="splash view">
+      <button type="button" id="start" value="proceed">
         <img src="assets/circle.png" class="logo-1" alt="logo" />
       </button>
     </section>
 
     <!-- for multiple choice -->
-    <section class="authentication">
-      <form action="" class="mult"></form>
+    <section class="authentication view hide" id="q01">
+      <h2 class="quest-text">this is the 1st question</h2>
+      <form action="" class="mult">
+        <button type="button" class="nav" value="proceed">Proceed</button>
+      </form>
     </section>
 
     <!-- for true/false - yes/no - binary choice -->
-    <section class="authentication">
+    <section class="authentication view hide" id="q02">
+      <h2 class="quest-text">This is some gawdawful 2nd question</h2>
       <form action="" class="mult">
         <p class="holder">
-          <input class="answer" type="radio" name="q01" value="a01" id="a01" />
+          <input
+            class="answer"
+            type="radio"
+            name="q01"
+            value="a01"
+            id="q01a01"
+          />
           <label for="a01">answer 1</label>
         </p>
 
         <p class="holder">
-          <input class="answer" type="radio" name="q01" value="a02" id="a02" />
+          <input
+            class="answer"
+            type="radio"
+            name="q01"
+            value="a02"
+            id="q01a02"
+          />
           <label for="a02">answer 2</label>
         </p>
+
+        <button type="button" class="nav" value="back">Back</button>
+        <button type="button" class="nav" value="proceed">Proceed</button>
       </form>
     </section>
 
     <!-- for OTHER -> explain textfield - may have different sizes-->
-    <section class="authentication">
+    <section class="authentication hide" id="q03">
+      <h3 class="quest-text">yep, the 3rd question!</h3>
       <form action="" class="mult">
         <p class="holder">
-          <input class="answer" type="radio" name="q03" value="a01" id="a01" />
+          <input
+            class="answer"
+            type="radio"
+            name="q03"
+            value="a01"
+            id="q03a01"
+          />
           <label for="a01">answer 1</label>
         </p>
 
         <p class="holder">
-          <input class="answer" type="radio" name="q03" value="a02" id="a02" />
+          <input
+            class="answer"
+            type="radio"
+            name="q03"
+            value="a02"
+            id="q03a02"
+          />
           <label for="a02">answer 2</label>
         </p>
 
         <textarea
           name="q03"
           value="a05"
-          id="a05"
+          id="q03a05"
           class="textbox"
           name="textarea"
           rows="2"
           cols="30"
           maxlength="100"
-          placeholder=""
+          disabled="true"
         ></textarea>
         <label for="a05">
           <div>do not write too much</div>
         </label>
+
+        <button type="button" class="nav" value="back">Back</button>
+        <button type="button" class="nav" value="proceed">Proceed</button>
       </form>
     </section>
 
-    <!-- <audio controls autoplay>
-      <source src="assets/out-of-cntrl.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio> -->
+    <!-- 
+      the last view before the end splash page 
+      audio starts once this view is shown
+    -->
+
+    <section class="authentication hide" id="q04">
+      <h2 class="quest-text">this is the last page before proceeding</h2>
+      <form action="">
+        <button type="button" class="nav" value="back">Back</button>
+        <button type="button" class="nav" value="end">Proceed</button>
+      </form>
+    </section>
+
+    <!-- 
+      contains clickable animated gif logo 
+      clicking logo stops video
+    -->
+    <section class="splash view hide">
+      <button type="button" id="end" value="proceed">
+        <img src="assets/circle.png" class="logo-1" alt="logo" />
+      </button>
+    </section>
 
     <!-- <fieldset>
       <legend>Instructions</legend>
@@ -88,10 +141,6 @@
       deny your entry to the show. In addition, you may not face severe
       penalties provided by law, including criminal prosecution
     </fieldset> -->
-
-    <article id="survey">
-      <h2>This is the survey</h2>
-    </article>
 
     <script src="index.js"></script>
   </body>

@@ -20,77 +20,101 @@ const surveyAnswers = {
   code: '',
 };
 
-let qNum = 1;
+// first other - activate textbox
+const other01 = document.getElementById('q03');
+other01.addEventListener('change', handleOther);
 
-// get demographic button
-const demoBtn = document.getElementById('demographics');
-demoBtn.addEventListener('click', handleDemographicSubmit);
+function handleOther(e) {
+  let textbox = document.getElementById('q03a05');
 
-buildSurvey(questions);
-
-function buildSurvey(arr) {
-  let survey = document.getElementById('survey');
-
-  for (q = 0; q < arr.length; q++) {
-    const question = buildQuestion(arr[q]);
-    question.setAttribute(
-      'name',
-      `q${qNum.toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      })}`
-    );
-    // console.log(survey);
-    survey.appendChild(question);
-
-    qNum += 1;
+  if (e.target.id === 'q03a02') {
+    textbox.removeAttribute('disabled');
+    textbox.setAttribute('placeholder', 'Explain Yourself!');
+  } else {
+    textbox.setAttribute('disabled', true);
+    textbox.removeAttribute('placeholder');
+    textbox.value = '';
   }
 }
 
-function buildQuestion(obj) {
-  const form = document.createElement('form');
-  form.classList.add('question');
-  const question = document.createElement('h3');
-  question.innerText = obj.question;
+// handle starting from the splash page
+const splash = document.getElementById('start');
+splash.addEventListener('click', startSurvey);
 
-  form.appendChild(question);
+function startSurvey(e) {
+  let begin = e.currentTarget;
+  begin.parentElement.classList.add('hide');
 
-  for (let a = 0; a < 4; a++) {
-    const holder = document.createElement('p');
-    const answer = document.createElement('input');
-
-    answer.classList.add('answer');
-    answer.setAttribute('type', 'radio');
-    answer.setAttribute(
-      'name',
-      `q${qNum.toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      })}`
-    );
-    answer.setAttribute('value', `a${a + 1}`);
-    answer.setAttribute('id', `a${a + 1}`);
-
-    const label = document.createElement('label');
-    label.setAttribute('for', `a${a + 1}`);
-
-    label.innerText = `${a + 1} ${obj['a' + (a + 1)]}`;
-
-    holder.appendChild(answer);
-    holder.appendChild(label);
-
-    form.appendChild(holder);
-  }
-
-  const button = document.createElement('button');
-  button.setAttribute('type', 'button');
-  button.innerText = 'submit answer';
-  button.addEventListener('click', handleAnswerSubmit);
-
-  form.appendChild(button);
-
-  return form;
+  let next = begin.parentElement.nextElementSibling;
+  next.classList.remove('hide');
+  next.classList.add('show');
 }
+
+// handle the navigation buttons
+const views = document.getElementsByClassName('nav');
+console.log(views);
+
+for (let view = 0; view < views.length; view++) {
+  views[view].addEventListener('click', handleNavigation);
+}
+
+function handleNavigation(e) {
+  // add values to object
+
+  let btnClicked = e.currentTarget;
+  console.log('the button clicked', btnClicked);
+
+  if (btnClicked.value === 'proceed') {
+    // hide this view
+    let parent = btnClicked.parentElement.parentElement;
+    console.log('parent', parent);
+    parent.classList.add('hide');
+    parent.classList.remove('show');
+
+    // show the next view
+    let next = parent.nextElementSibling;
+    console.log('the next view', next);
+    next.classList.remove('hide');
+    next.classList.add('show');
+  } else if (btnClicked.value === 'back') {
+    // hide this view
+    let parent = btnClicked.parentElement.parentElement;
+    console.log('parent', parent);
+    parent.classList.add('hide');
+    parent.classList.remove('show');
+
+    // show previous view
+    let next = parent.previousElementSibling;
+    console.log('the next view', next);
+    next.classList.remove('hide');
+    next.classList.add('show');
+  } else if (btnClicked.value === 'end') {
+    // hide this view
+    let parent = btnClicked.parentElement.parentElement;
+    console.log('parent', parent);
+    parent.classList.add('hide');
+    parent.classList.remove('show');
+
+    // show the next view
+    let next = parent.nextElementSibling;
+    console.log('the next view', next);
+    next.classList.remove('hide');
+    next.classList.add('show');
+
+    // start playing audio
+    const audioElement = new Audio('assets/out-of-cntrl.mp3');
+    audioElement.loop = true;
+    audioElement.play();
+  } else {
+    console.log('error!');
+  }
+}
+
+// // get demographic button
+// const demoBtn = document.getElementById('demographics');
+// demoBtn.addEventListener('click', handleDemographicSubmit);
+
+// button.addEventListener('click', handleAnswerSubmit);
 
 function handleAnswerSubmit(e) {
   e.preventDefault();
@@ -110,15 +134,6 @@ function handleAnswerSubmit(e) {
 
   surveyAnswers[e.target.parentElement.name] = answer;
   console.log(surveyAnswers, 'answers');
-}
-
-function handleDemographicSubmit(e) {
-  e.preventDefault();
-
-  console.log(e.target.parentElement.firstElementChild.value);
-
-  surveyAnswers.first = e.target.parentElement.firstElementChild.value;
-  surveyAnswers.first = e.target.parentElement.firstElementChild.value;
 }
 
 function handleViewSwitch(e) {
