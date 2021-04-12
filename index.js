@@ -24,6 +24,14 @@ const surveyAnswers = {
 const other01 = document.getElementById('q03');
 other01.addEventListener('change', handleOther);
 
+// grab the heading for the bipocnithity text to toggle it
+const bipocHeading = document.getElementById('bipoc-heading');
+
+// this toggles the words in the bipocHeading
+setInterval(function () {
+  toggleWords(bipocHeading);
+}, 2000);
+
 function handleOther(e) {
   let textbox = document.getElementById('q03a05');
 
@@ -37,20 +45,8 @@ function handleOther(e) {
   }
 }
 
-// handle starting from the splash page
-const splash = document.getElementById('start');
-splash.addEventListener('click', startSurvey);
-
-function startSurvey(e) {
-  let begin = e.currentTarget;
-  begin.parentElement.classList.add('hide');
-
-  let next = begin.parentElement.nextElementSibling;
-  next.classList.remove('hide');
-  next.classList.add('show');
-}
-
-// handle the navigation buttons
+// handle the navigation buttons - every page
+// maybe make this into a switch statement later?
 const views = document.getElementsByClassName('nav');
 console.log(views);
 
@@ -62,42 +58,47 @@ function handleNavigation(e) {
   // add values to object
 
   let btnClicked = e.currentTarget;
-  console.log('the button clicked', btnClicked);
 
   if (btnClicked.value === 'proceed') {
     // hide this view
     let parent = btnClicked.parentElement.parentElement;
-    console.log('parent', parent);
     parent.classList.add('hide');
     parent.classList.remove('show');
-
+    console.log(parent);
     // show the next view
     let next = parent.nextElementSibling;
-    console.log('the next view', next);
     next.classList.remove('hide');
     next.classList.add('show');
   } else if (btnClicked.value === 'back') {
     // hide this view
     let parent = btnClicked.parentElement.parentElement;
-    console.log('parent', parent);
     parent.classList.add('hide');
     parent.classList.remove('show');
 
     // show previous view
     let next = parent.previousElementSibling;
-    console.log('the next view', next);
     next.classList.remove('hide');
     next.classList.add('show');
-  } else if (btnClicked.value === 'end') {
+  } else if (btnClicked.value === 'bipoc') {
     // hide this view
     let parent = btnClicked.parentElement.parentElement;
-    console.log('parent', parent);
     parent.classList.add('hide');
     parent.classList.remove('show');
 
     // show the next view
     let next = parent.nextElementSibling;
-    console.log('the next view', next);
+    next.classList.remove('hide');
+    next.classList.add('show');
+
+    // start the word toggle
+  } else if (btnClicked.value === 'end') {
+    // hide this view
+    let parent = btnClicked.parentElement.parentElement;
+    parent.classList.add('hide');
+    parent.classList.remove('show');
+
+    // show the next view
+    let next = parent.nextElementSibling;
     next.classList.remove('hide');
     next.classList.add('show');
 
@@ -148,6 +149,48 @@ function handleViewSwitch(e) {
     // hide current view
     // show previous view
   }
+}
+
+function toggleWords(bipocHeading) {
+  if (bipocHeading.firstElementChild.classList[0] === 'words') {
+    // remove the bland words
+    bipocHeading.firstElementChild.classList.add('words-gone');
+    bipocHeading.firstElementChild.classList.remove('words');
+    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
+      'words-gone'
+    );
+    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
+      'words'
+    );
+
+    // add the spicy words
+    bipocHeading.firstElementChild.nextElementSibling.classList.add('words');
+    bipocHeading.firstElementChild.nextElementSibling.classList.remove(
+      'words-gone'
+    );
+    bipocHeading.lastElementChild.classList.add('words');
+    bipocHeading.lastElementChild.classList.remove('words-gone');
+  } else {
+    // add the bland words
+    bipocHeading.firstElementChild.classList.remove('words-gone');
+    bipocHeading.firstElementChild.classList.add('words');
+    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
+      'words-gone'
+    );
+    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
+      'words'
+    );
+
+    // remove the spicy words
+    bipocHeading.firstElementChild.nextElementSibling.classList.add(
+      'words-gone'
+    );
+    bipocHeading.firstElementChild.nextElementSibling.classList.remove('words');
+    bipocHeading.lastElementChild.classList.add('words-gone');
+    bipocHeading.lastElementChild.classList.remove('words');
+  }
+  // bipocHeading.firstElementChild.innerHTML = 'Clown';
+  // bipocHeading.lastElementChild.innerHTML = 'Barsoom';
 }
 
 // function handleFormSubmit(e) {

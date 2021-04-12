@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
@@ -21,16 +32,101 @@
       clicking logo leads to view #1 - authentication step #1
     -->
     <section class="splash view">
-      <button type="button" id="start" value="proceed">
-        <img src="assets/circle.png" class="logo-1" alt="logo" />
-      </button>
+      <img src="assets/first-seal.png" class="logo-1" alt="logo" />
+      <img
+        src="assets/first-seal-center.png"
+        alt="logo-center"
+        class="logo-2"
+      />
+      <form action="" class="">
+        <button
+          type="button"
+          id="start"
+          value="proceed"
+          class="nav nav--proceed"
+        >
+          Proceed
+        </button>
+      </form>
+    </section>
+
+    <section class="truth view hide">
+      <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
+      <div class="camo-circle"></div>
+      <div class="truth-heading">
+        <p>Declaration of</p>
+        <p class="truth-text">TRUTH</p>
+      </div>
+
+      <form action="" class="mult">
+        <h3 class="truth-quest-1">
+          If you knowingly or willfully misrepresent or omit a material/personal
+          fact or sumbit a false truth and information with this form, we may or
+          may not deny your entry to the show. In addition, you may or may not
+          face severe penalties provided by law, including criminal prosecution.
+        </h3>
+        <p class="speak-truth">I will speak my truth</p>
+        <div class="center-radio">
+          <span>
+            <input
+              class="answer"
+              type="radio"
+              name="q03"
+              value="a01"
+              id="q03a01"
+            />
+            <label for="a01">yes</label>
+          </span>
+
+          <span>
+            <input
+              class="answer"
+              type="radio"
+              name="q03"
+              value="a02"
+              id="q03a02"
+            />
+            <label for="a02">no</label>
+          </span>
+
+          <span>
+            <input
+              class="answer"
+              type="radio"
+              name="q03"
+              value="a03"
+              id="q03a03"
+            />
+            <label for="a03">maybe</label>
+          </span>
+        </div>
+        <button type="button" class="nav nav--proceed" value="proceed">
+          Proceed
+        </button>
+      </form>
+    </section>
+
+    <!-- bipocnithity text - certain words toggle -->
+    <section class="bipocnithity view hide">
+      <h2 id="bipoc-heading">
+        The first two questions are designed to identify your
+        <span class="words">ethnicity</span
+        ><span class="bipoc-text words-gone">BIPOCNITHITY</span> and
+        <span class="words">race</span
+        ><span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
+      </h2>
+      <form action="" class="mult">
+        <button type="button" class="nav nav--proceed" value="proceed">
+          Proceed
+        </button>
+      </form>
     </section>
 
     <!-- for multiple choice -->
     <section class="authentication view hide" id="q01">
       <h2 class="quest-text">this is the 1st question</h2>
       <form action="" class="mult">
-        <button type="button" class="nav" value="proceed">Proceed</button>
+        <button type="button" class="nav" value="bipoc">Proceed</button>
       </form>
     </section>
 
@@ -38,30 +134,18 @@
     <section class="authentication view hide" id="q02">
       <h2 class="quest-text">This is some gawdawful 2nd question</h2>
       <form action="" class="mult">
-        <p class="holder">
-          <input
-            class="answer"
-            type="radio"
-            name="q01"
-            value="a01"
-            id="q01a01"
-          />
-          <label for="a01">answer 1</label>
-        </p>
+        <input class="answer" type="radio" name="q01" value="a01" id="q01a01" />
+        <label for="a01">answer 1</label>
 
-        <p class="holder">
-          <input
-            class="answer"
-            type="radio"
-            name="q01"
-            value="a02"
-            id="q01a02"
-          />
-          <label for="a02">answer 2</label>
-        </p>
+        <input class="answer" type="radio" name="q01" value="a02" id="q01a02" />
+        <label for="a02">answer 2</label>
 
-        <button type="button" class="nav" value="back">Back</button>
-        <button type="button" class="nav" value="proceed">Proceed</button>
+        <button type="button" class="nav nav--back" value="back">
+          Go Back
+        </button>
+        <button type="button" class="nav nav--proceed" value="proceed">
+          Proceed
+        </button>
       </form>
     </section>
 
@@ -106,7 +190,7 @@
           <div>do not write too much</div>
         </label>
 
-        <button type="button" class="nav" value="back">Back</button>
+        <button type="button" class="nav" value="back">Go Back</button>
         <button type="button" class="nav" value="proceed">Proceed</button>
       </form>
     </section>
@@ -119,7 +203,7 @@
     <section class="authentication hide" id="q04">
       <h2 class="quest-text">this is the last page before proceeding</h2>
       <form action="">
-        <button type="button" class="nav" value="back">Back</button>
+        <button type="button" class="nav" value="back">Go Back</button>
         <button type="button" class="nav" value="end">Proceed</button>
       </form>
     </section>
@@ -130,7 +214,7 @@
     -->
     <section class="splash view hide">
       <button type="button" id="end" value="proceed">
-        <img src="assets/circle.png" class="logo-1" alt="logo" />
+        <img src="" class="logo-1" alt="logo" />
       </button>
     </section>
 

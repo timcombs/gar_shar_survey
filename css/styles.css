@@ -1,11 +1,21 @@
+:root {
+  --red: #f71111;
+  --blue: #1a2f59;
+}
+
 html {
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Libre Caslon Text', serif;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+.font-stash {
+  font-family: 'Libre Caslon Text', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* for the fancy radio buttons! */
@@ -56,10 +66,154 @@ input[type='radio']:checked::before {
   margin: 20px auto;
 }
 
-/* for opening and closing page */
+.nav {
+  background-color: var(--blue);
+  color: white;
+  font-family: 'Libre Caslon Text', serif;
+  font-style: italic;
+  padding: 5px 10px;
+  border: unset;
+  box-shadow: 3px 2px 2px white;
+}
+
+.nav--back {
+  position: absolute;
+  bottom: 7%;
+  left: 7%;
+}
+
+.nav--proceed {
+  position: absolute;
+  bottom: 7%;
+  right: 7%;
+}
+
+/* for opening page */
 .splash {
-  background-color: blue;
+  background-color: var(--blue);
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vw;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#start {
+  box-shadow: white;
+}
+
+.logo-1 {
+  position: absolute;
+  width: 55%;
+}
+.logo-2 {
+  position: absolute;
+  width: 35%;
+  top: 25.75%;
+  left: 32.7%;
+  animation: rotate-seal 6000ms linear infinite;
+}
+
+@keyframes rotate-seal {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* for views with headings that say truth */
+.truth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vw;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.truth-heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3% 0 2% 28%;
+  background-color: var(--red);
+  width: 72%;
+  color: white;
+}
+
+.truth-heading p {
+  margin: 5px;
+}
+
+.truth-text {
+  font-size: 1.5rem;
+}
+
+.truth form {
+  margin-top: 50%;
+  border: 2px solid var(--blue);
+  outline: 1px solid var(--blue);
+  outline-offset: 3px;
+  width: 60%;
+  height: 60%;
+  padding: 10px;
+  position: relative;
+}
+
+.truth-quest-1 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: center;
+}
+
+.speak-truth {
+  color: var(--red);
+  font-style: italic;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.center-radio {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 70px;
+}
+
+.logo-3 {
+  position: absolute;
+  width: 25%;
+  top: 6%;
+  left: 2%;
+  z-index: 10;
+}
+
+.camo-circle {
+  position: absolute;
+  width: 33%;
+  height: 33vw;
+  top: 0%;
+  border-radius: 50%;
+  left: 2%;
+  border: 3px solid var(--red);
+  background-image: url(../assets/camo.png);
+  background-size: contain;
+}
+
+.authentication {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -69,16 +223,15 @@ input[type='radio']:checked::before {
   margin: 0 auto;
 }
 
-.authentication {
-  background-color: white;
+.bipocnithity {
+  background-color: var(--red);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
-  max-width: 750px;
-  max-height: 750px;
-  margin: 0 auto;
+  height: 100vw;
+  position: relative;
+  font-family: 'Libre Caslon Text', serif;
 }
 
 .hide {
@@ -86,5 +239,27 @@ input[type='radio']:checked::before {
 }
 
 .show {
-  display: block;
+  display: flex;
+}
+
+#bipoc-heading {
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  width: 80%;
+}
+
+.bipoc-text {
+  font-size: 1.7rem;
+  font-style: italic;
+  font-weight: 400;
+  color: black;
+}
+
+.words {
+  display: inline;
+}
+
+.words-gone {
+  display: none;
 }
