@@ -18,7 +18,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* for the fancy radio buttons! */
+/* for the fancy RADIO BUTTONS! */
 input[type='radio'] {
   position: relative;
   -webkit-appearance: none;
@@ -27,9 +27,10 @@ input[type='radio'] {
   height: 1em;
   border: unset;
   /* Adjusts the position of the checkboxes on the text baseline */
-  vertical-align: -2px;
+  vertical-align: -6px;
   /* Set here so that Windows' High-Contrast Mode can override */
   background-color: red;
+  margin-bottom: 0.3rem;
 }
 
 input[type='radio']::before {
@@ -55,6 +56,17 @@ input[type='radio']:checked::before {
 /* for text areas */
 .textbox {
   resize: none;
+  width: 100%;
+  margin-left: 3px;
+  border: unset;
+  background-color: var(--red);
+}
+
+.textbox-label {
+  margin-top: 7px;
+  padding-left: 4px;
+  display: block;
+  font-size: 8px;
 }
 
 .question {
@@ -78,13 +90,13 @@ input[type='radio']:checked::before {
 
 .nav--back {
   position: absolute;
-  bottom: 7%;
+  bottom: 4%;
   left: 7%;
 }
 
 .nav--proceed {
   position: absolute;
-  bottom: 7%;
+  bottom: 4%;
   right: 7%;
 }
 
@@ -131,63 +143,16 @@ input[type='radio']:checked::before {
 .truth {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  width: 100vw;
+  /* width: 100vw;
   height: 100vw;
   max-width: 750px;
   max-height: 750px;
+  min-height: 400px;
+  min-width: 360px; */
   margin: 0 auto;
   position: relative;
-}
-
-.truth-heading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 3% 0 2% 28%;
-  background-color: var(--red);
-  width: 72%;
-  color: white;
-}
-
-.truth-heading p {
-  margin: 5px;
-}
-
-.truth-text {
-  font-size: 1.5rem;
-}
-
-.truth form {
-  margin-top: 50%;
-  border: 2px solid var(--blue);
-  outline: 1px solid var(--blue);
-  outline-offset: 3px;
-  width: 60%;
-  height: 60%;
-  padding: 10px;
-  position: relative;
-}
-
-.truth-quest-1 {
-  font-size: 0.8rem;
-  font-weight: 400;
-  margin-top: 0;
-  text-align: center;
-}
-
-.speak-truth {
-  color: var(--red);
-  font-style: italic;
-  text-align: center;
-  font-size: 0.8rem;
-}
-
-.center-radio {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 70px;
 }
 
 .logo-3 {
@@ -208,6 +173,100 @@ input[type='radio']:checked::before {
   border: 3px solid var(--red);
   background-image: url(../assets/camo.png);
   background-size: contain;
+}
+
+.truth-heading {
+  position: relative;
+  /* padding: 3% 0 2% 28%; */
+  background-color: var(--red);
+  width: 100%;
+  color: white;
+}
+
+/* .truth-heading p {
+  margin: 5px;
+} */
+
+.truth-text {
+  font-size: 1.5rem;
+}
+
+.truth form {
+  margin-top: 20%;
+  border: 2px solid var(--blue);
+  outline: 1px solid var(--blue);
+  outline-offset: 3px;
+  width: 80%;
+  height: 60%;
+  padding: 10px;
+  padding-top: 0;
+  position: relative;
+}
+
+.truth-quest-1 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: center;
+}
+
+.truth-quest-2 {
+  font-size: 1rem;
+  /* font-weight: 400; */
+  /* margin-top: 0; */
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.speak-truth {
+  color: var(--red);
+  font-style: italic;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.question-truth {
+  color: white;
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.6rem;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.radio-answer-center {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20%;
+}
+
+.radio-answer-column-step-1 {
+  /* waiting to move/size questions */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  padding: 0 4.5% 20% 4.5%;
+}
+
+.small-truth {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 8px;
+  font-style: italic;
+}
+
+.spice {
+  color: var(--red);
+}
+
+.aside-truth {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 6px;
+  font-style: italic;
+  font-weight: 400;
+  width: 88%;
+  margin-top: 16px;
 }
 
 .authentication {
