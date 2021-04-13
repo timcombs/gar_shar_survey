@@ -74,7 +74,7 @@
         id on the form is the question number
         corresponding to object submitted to google sheet
       -->
-      <form action="" class="mult" id="q01">
+      <form action="" value="single">
         <h3 class="truth-quest-1">
           If you knowingly or willfully misrepresent or omit a material/personal
           fact or sumbit a false truth and information with this form, we may or
@@ -117,6 +117,22 @@
             <label for="a03">maybe</label>
           </span>
         </div>
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
+          Proceed
+        </button>
+      </form>
+    </section>
+
+    <!-- bipocnithity text - certain words toggle -->
+    <section class="bipocnithity view hide">
+      <h2 id="bipoc-heading">
+        The first two questions are designed to identify your
+        <span class="words">ethnicity</span
+        ><span class="bipoc-text words-gone">BIPOCNITHITY</span> and
+        <span class="words">race</span
+        ><span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
+      </h2>
+      <form action="" class="mult">
         <button type="button" class="nav nav--proceed" value="proceed">
           Proceed
         </button>
@@ -139,7 +155,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -208,7 +224,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -230,7 +246,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -263,7 +279,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -292,7 +308,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -366,7 +382,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -388,7 +404,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -435,7 +451,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -457,7 +473,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -526,7 +542,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -548,7 +564,7 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
+      <form action="" value="single" id="">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -617,7 +633,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
           Proceed
         </button>
       </form>
@@ -637,16 +653,17 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
-        <h3 class="truth-quest-2">
+      <form action="" value="mult" id="">
+        <h3 class="personal-truth-quest">
           <div>8-Step</div>
           <div>Authentication Process</div>
         </h3>
-        <p class="question-truth">
+        <p class="question-personal-truth">
           Step 7:
           <span class="personal-truth">PERSONAL INFORMATION SECTION</span>
         </p>
         <p class="small-red-truth">Please be honest</p>
+
         <div class="radio-answer-column-personal">
           <!-- divs for vertical -->
           <div class="binary-truth-question">
@@ -769,7 +786,7 @@
           </div>
         </div>
 
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedMultAnswer">
           Proceed
         </button>
       </form>
@@ -789,16 +806,18 @@
         </div>
       </banner>
 
-      <form action="" class="mult" id="">
-        <h3 class="truth-quest-2">
+      <form action="" value="mult" id="">
+        <h3 class="personal-truth-quest">
           <div>8-Step</div>
           <div>Authentication Process</div>
         </h3>
-        <p class="question-truth">
+        <p class="question-personal-truth">
           Step 8:
           <span class="personal-truth">PERSONAL INFORMATION SECTION</span>
         </p>
         <p class="small-red-truth">Please be honest</p>
+
+        <!-- holds the question and answers -->
         <div class="radio-answer-column-personal">
           <!-- divs for vertical -->
           <div class="binary-truth-question">
@@ -806,6 +825,7 @@
             help with, or otherwise participate in any of the following:
           </div>
 
+          <!-- each of these holds a telltale and the yes/no radio buttons -->
           <div class="binary-truth-holder">
             <div class="binary-truth-letter">a.</div>
             <div class="binary-truth-telltale">Land Back</div>
@@ -916,26 +936,38 @@
             </div>
           </div>
         </div>
-        <button type="button" class="nav nav--back" value="back">
-          Go Back
+
         </button>
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed" value="proceedMultAnswer">
           Proceed
         </button>
       </form>
     </section>
 
-    <!-- bipocnithity text - certain words toggle -->
-    <section class="bipocnithity view hide">
-      <h2 id="bipoc-heading">
-        The first two questions are designed to identify your
-        <span class="words">ethnicity</span
-        ><span class="bipoc-text words-gone">BIPOCNITHITY</span> and
-        <span class="words">race</span
-        ><span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
+    <!-- rebellion text - words and proceed button slowly fade in -->
+    <section class="rebellion view hide">
+      <h2 class="rebellion-sentence">
+        <span>Rebellions</span>
+        <span>carried</span>
+        <span>on</span>
+        <span>the</span>
+        <span>felt</span>
+        <span>tip</span>
+        <span>of</span>
+        <span>an</span>
+        <span>evening</span>
+        <span>sunset</span>
+        <span>Images</span>
+        <span>slashing</span>
+        <span>between</span>
+        <span>the</span>
+        <span>language</span>
+        <span>of</span>
+        <span>reality</span>
       </h2>
+
       <form action="" class="mult">
-        <button type="button" class="nav nav--proceed" value="proceed">
+        <button type="button" class="nav nav--proceed rebellion-sentence-proceed" value="proceed">
           Proceed
         </button>
       </form>

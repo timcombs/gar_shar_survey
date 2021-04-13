@@ -45,62 +45,81 @@ function handleOther(e) {
   }
 }
 
-// handle the navigation buttons - every page
-// maybe make this into a switch statement later?
-const views = document.getElementsByClassName('nav');
-console.log(views);
+// ------------handle the navigation buttons - every page
+// ------------maybe make this into a switch statement later?
 
+// grab all the navigation buttons & add event listener
+const views = document.getElementsByClassName('nav');
 for (let view = 0; view < views.length; view++) {
   views[view].addEventListener('click', handleNavigation);
 }
+console.log(views);
+
+// TODO: HOWTO handle updating the object with the answers?
+// not every view has a form
+// proceed buttons should have a value to handle this!!!!
+// value = proceedSingleAnswer
+// value = proceedMultAnswer
+// so more conditionals!!
 
 function handleNavigation(e) {
   // add values to object
 
   let btnClicked = e.currentTarget;
 
+  function hideThe(node) {
+    node.classList.add('hide');
+    node.classList.remove('show');
+    console.log('hide the', node);
+  }
+
+  function showThe(node) {
+    node.classList.remove('hide');
+    node.classList.add('show');
+    console.log('show the', node);
+  }
+
   if (btnClicked.value === 'proceed') {
-    // hide this view
-    let parent = btnClicked.parentElement.parentElement;
-    parent.classList.add('hide');
-    parent.classList.remove('show');
-    console.log(parent);
-    // show the next view
-    let next = parent.nextElementSibling;
-    next.classList.remove('hide');
-    next.classList.add('show');
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceed');
+  } else if (btnClicked.value === 'proceedSingleAnswer') {
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedSingleAnswer');
+  } else if (btnClicked.value === 'proceedMultAnswer') {
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedMultAnswer');
   } else if (btnClicked.value === 'back') {
-    // hide this view
-    let parent = btnClicked.parentElement.parentElement;
-    parent.classList.add('hide');
-    parent.classList.remove('show');
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
 
-    // show previous view
-    let next = parent.previousElementSibling;
-    next.classList.remove('hide');
-    next.classList.add('show');
+    let previous = current.previousElementSibling;
+    showThe(previous);
   } else if (btnClicked.value === 'bipoc') {
-    // hide this view
-    let parent = btnClicked.parentElement.parentElement;
-    parent.classList.add('hide');
-    parent.classList.remove('show');
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
 
-    // show the next view
-    let next = parent.nextElementSibling;
-    next.classList.remove('hide');
-    next.classList.add('show');
+    let next = current.nextElementSibling;
+    showThe(next);
 
     // start the word toggle
   } else if (btnClicked.value === 'end') {
-    // hide this view
-    let parent = btnClicked.parentElement.parentElement;
-    parent.classList.add('hide');
-    parent.classList.remove('show');
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
 
-    // show the next view
-    let next = parent.nextElementSibling;
-    next.classList.remove('hide');
-    next.classList.add('show');
+    let next = current.nextElementSibling;
+    showThe(next);
 
     // start playing audio
     const audioElement = new Audio('assets/out-of-cntrl.mp3');

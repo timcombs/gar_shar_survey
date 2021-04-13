@@ -139,7 +139,7 @@ input[type='radio']:checked::before {
   }
 }
 
-/* for views with headings that say truth */
+/* -------------------------- for views with headings that say TRUTH */
 .truth {
   display: flex;
   flex-direction: column;
@@ -232,6 +232,15 @@ input[type='radio']:checked::before {
   margin-bottom: 1.5rem;
 }
 
+.personal-truth-quest {
+  font-size: 1rem;
+  /* font-weight: 400; */
+  /* margin-top: 0; */
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
 .speak-truth {
   color: var(--red);
   font-style: italic;
@@ -248,6 +257,17 @@ input[type='radio']:checked::before {
   font-size: 0.6rem;
   padding: 6px 10px;
   margin-bottom: 10px;
+}
+
+.question-personal-truth {
+  color: white;
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.6rem;
+  padding: 6px 10px;
+  margin-bottom: 5px;
 }
 
 .personal-truth {
@@ -272,7 +292,7 @@ input[type='radio']:checked::before {
   /* waiting to move/size questions */
   font-family: 'LibreLibre Caslon Text', serif;
   font-size: 12px;
-  padding: 0 4.5% 20% 4.5%;
+  padding: 0 4.5% 14.25% 4.5%;
 }
 
 .small-truth {
@@ -287,7 +307,7 @@ input[type='radio']:checked::before {
   font-style: italic;
   color: var(--red);
   text-align: right;
-  margin-top: -8px;
+  margin-top: -4px;
 }
 
 .spice {
@@ -326,13 +346,13 @@ input[type='radio']:checked::before {
 
 .binary-truth-telltale {
   flex: none;
-  width: 70%;
+  width: 65%;
 }
 
 .binary-truth-response {
   display: flex;
   flex: none;
-  width: 15%;
+  width: 17%;
 }
 
 .authentication {
@@ -359,14 +379,6 @@ input[type='radio']:checked::before {
   font-family: 'Libre Caslon Text', serif;
 }
 
-.hide {
-  display: none;
-}
-
-.show {
-  display: flex;
-}
-
 #bipoc-heading {
   font-size: 1rem;
   font-weight: 400;
@@ -379,6 +391,105 @@ input[type='radio']:checked::before {
   font-style: italic;
   font-weight: 400;
   color: black;
+}
+
+.rebellion {
+  color: var(--red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vw;
+  position: relative;
+  font-family: 'Libre Caslon Text', serif;
+}
+
+.rebellion-sentence {
+  font-size: 1.25rem;
+  font-weight: 400;
+  width: 80%;
+  flex: none;
+  font-style: italic;
+}
+
+.rebellion-sentence span {
+  animation: 1000ms rebellion-fade-in forwards;
+  opacity: 0;
+}
+
+.rebellion-sentence span:nth-child(1) {
+  opacity: 1;
+}
+.rebellion-sentence span:nth-child(2) {
+  animation-delay: 1619ms;
+}
+.rebellion-sentence span:nth-child(3) {
+  animation-delay: 2619ms;
+}
+.rebellion-sentence span:nth-child(4) {
+  animation-delay: 3619ms;
+}
+.rebellion-sentence span:nth-child(5) {
+  animation-delay: 4619ms;
+}
+.rebellion-sentence span:nth-child(6) {
+  animation-delay: 5619ms;
+}
+.rebellion-sentence span:nth-child(7) {
+  animation-delay: 6619ms;
+}
+.rebellion-sentence span:nth-child(8) {
+  animation-delay: 7619ms;
+}
+.rebellion-sentence span:nth-child(9) {
+  animation-delay: 8619ms;
+}
+.rebellion-sentence span:nth-child(10) {
+  animation-delay: 9619ms;
+}
+.rebellion-sentence span:nth-child(11) {
+  animation-delay: 10619ms;
+}
+.rebellion-sentence span:nth-child(12) {
+  animation-delay: 11619ms;
+}
+.rebellion-sentence span:nth-child(13) {
+  animation-delay: 12619ms;
+}
+.rebellion-sentence span:nth-child(14) {
+  animation-delay: 13619ms;
+}
+.rebellion-sentence span:nth-child(15) {
+  animation-delay: 14619ms;
+}
+.rebellion-sentence span:nth-child(16) {
+  animation-delay: 15619ms;
+}
+.rebellion-sentence span:nth-child(17) {
+  animation-delay: 16619ms;
+}
+.rebellion-sentence-proceed {
+  opacity: 0;
+  animation: 1000ms rebellion-fade-in forwards;
+  animation-delay: 20000ms;
+  box-shadow: 3px 2px 2px var(--red);
+}
+
+@keyframes rebellion-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 .words {
