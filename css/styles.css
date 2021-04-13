@@ -218,7 +218,8 @@ input[type='radio']:checked::before {
 .truth-quest-1 {
   font-size: 0.8rem;
   font-weight: 400;
-  margin-top: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
@@ -249,10 +250,15 @@ input[type='radio']:checked::before {
   margin-bottom: 10px;
 }
 
+.personal-truth {
+  font-family: 'Libre Caslon Text', serif;
+  margin-top: 0;
+}
+
 .radio-answer-center {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 20%;
+  padding-bottom: 35%;
 }
 
 .radio-answer-column-step-1 {
@@ -262,14 +268,34 @@ input[type='radio']:checked::before {
   padding: 0 4.5% 20% 4.5%;
 }
 
+.radio-answer-column-personal {
+  /* waiting to move/size questions */
+  font-family: 'LibreLibre Caslon Text', serif;
+  font-size: 12px;
+  padding: 0 4.5% 20% 4.5%;
+}
+
 .small-truth {
   font-family: 'Libre Caslon Text', serif;
   font-size: 7px;
   font-style: italic;
 }
 
+.small-red-truth {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 7px;
+  font-style: italic;
+  color: var(--red);
+  text-align: right;
+  margin-top: -8px;
+}
+
 .spice {
   color: var(--red);
+}
+
+.lean {
+  font-style: italic;
 }
 
 .aside-truth {
@@ -279,6 +305,34 @@ input[type='radio']:checked::before {
   font-weight: 400;
   width: 88%;
   margin-top: 16px;
+}
+
+.binary-truth-holder {
+  display: flex;
+  vertical-align: middle;
+  padding: 3% 5%;
+  border: 1px solid lightgray;
+}
+
+.binary-truth-question {
+  padding: 3% 5%;
+  border: 1px solid lightgray;
+}
+
+.binary-truth-letter {
+  flex: none;
+  width: 5%;
+}
+
+.binary-truth-telltale {
+  flex: none;
+  width: 70%;
+}
+
+.binary-truth-response {
+  display: flex;
+  flex: none;
+  width: 15%;
 }
 
 .authentication {
