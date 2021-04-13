@@ -155,10 +155,17 @@ input[type='radio']:checked::before {
   position: relative;
 }
 
+.truth-banner {
+  position: relative;
+  /* padding: 3% 0 2% 28%; */
+  width: 100%;
+  color: white;
+}
+
 .logo-3 {
   position: absolute;
   width: 25%;
-  top: 6%;
+  top: 25%;
   left: 2%;
   z-index: 10;
 }
@@ -167,28 +174,33 @@ input[type='radio']:checked::before {
   position: absolute;
   width: 33%;
   height: 33vw;
-  top: 0%;
+  top: 10%;
   border-radius: 50%;
   left: 2%;
   border: 3px solid var(--red);
   background-image: url(../assets/camo.png);
   background-size: contain;
+  z-index: 0;
 }
 
-.truth-heading {
-  position: relative;
-  /* padding: 3% 0 2% 28%; */
+.truth-banner-text {
   background-color: var(--red);
-  width: 100%;
-  color: white;
+  position: relative;
+  z-index: 5;
+  padding-left: 28%;
 }
 
-/* .truth-heading p {
-  margin: 5px;
-} */
+.truth-banner-text p:nth-child(1) {
+  margin-top: 0;
+  padding-top: 5%;
+  margin-bottom: 1%;
+  padding-right: 10%;
+}
 
-.truth-text {
+.truth-banner-text p:nth-child(2) {
   font-size: 1.5rem;
+  margin-top: 1%;
+  padding-bottom: 5%;
 }
 
 .truth form {
@@ -252,7 +264,7 @@ input[type='radio']:checked::before {
 
 .small-truth {
   font-family: 'Libre Caslon Text', serif;
-  font-size: 8px;
+  font-size: 7px;
   font-style: italic;
 }
 

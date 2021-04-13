@@ -30,7 +30,7 @@ const bipocHeading = document.getElementById('bipoc-heading');
 // this toggles the words in the bipocHeading
 setInterval(function () {
   toggleWords(bipocHeading);
-}, 2000);
+}, 1500);
 
 function handleOther(e) {
   let textbox = document.getElementById('q03a05');
