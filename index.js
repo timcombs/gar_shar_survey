@@ -26,10 +26,12 @@ other01.addEventListener('change', handleOther);
 
 // grab the heading for the bipocnithity text to toggle it
 const bipocHeading = document.getElementById('bipoc-heading');
+const bipocHeadingALT = document.getElementById('bipoc-heading-ALT');
 
 // this toggles the words in the bipocHeading
 setInterval(function () {
   toggleWords(bipocHeading);
+  toggleWords(bipocHeadingALT);
 }, 1000);
 
 function handleOther(e) {

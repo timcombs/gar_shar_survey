@@ -408,6 +408,24 @@ input[type='radio']:checked::before {
   width: 80%;
 }
 
+.bipocnithity-ALT {
+  background-color: var(--red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: 'Libre Caslon Text', serif;
+}
+
+#bipoc-heading-ALT {
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  width: 80%;
+}
+
 .bipoc-text {
   font-size: 1.7rem;
   font-style: italic;
@@ -422,6 +440,17 @@ input[type='radio']:checked::before {
   align-items: center;
   width: 100vw;
   height: 100vw;
+  position: relative;
+  font-family: 'Libre Caslon Text', serif;
+}
+
+.rebellion-ALT {
+  color: var(--red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   font-family: 'Libre Caslon Text', serif;
 }
