@@ -114,6 +114,19 @@ input[type='radio']:checked::before {
   position: relative;
 }
 
+.splash-ALT {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
 #start {
   box-shadow: white;
 }
@@ -122,10 +135,19 @@ input[type='radio']:checked::before {
   position: absolute;
   width: 55%;
 }
+
 .logo-2 {
   position: absolute;
   width: 35%;
   top: 25.75%;
+  left: 32.7%;
+  animation: rotate-seal 6000ms linear infinite;
+}
+
+.logo-2-ALT {
+  position: absolute;
+  width: 35%;
+  top: 36.4%;
   left: 32.7%;
   animation: rotate-seal 6000ms linear infinite;
 }
