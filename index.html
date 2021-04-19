@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
-  <body>
     <!-- 
       • each view is a section
       • a view may contain ONE or MORE questions
@@ -45,47 +44,95 @@
           value="proceed"
           class="nav nav--proceed"
         >
+        <!-- NEED TO ADD A CLASS TO MOVE BUTTON TO CENTER -->
           Proceed
         </button>
       </form>
     </section>
 
+    <!-- User Info -->
+    <section class="userinfo view hide">
+      <banner class="truth-banner">
+      </banner>
 
-    <!-- 
-      ALTERNATIVE TO FILL THE VIEWPORT
-      contains clickable animated gif logo 
-      clicking logo leads to view #1 - authentication step #1
-    -->
-    <section class="splash-ALT view hide">
-      <img src="assets/first-seal.png" class="logo-1" alt="logo" />
-      <img
-        src="assets/first-seal-center.png"
-        alt="logo-center"
-        class="logo-2-ALT"
-      />
-      <form action="" class="">
-        <button
-          type="button"
-          id="start"
-          value="proceed"
-          class="nav nav--proceed"
-        >
+      <h3 class="userinfo-ask">
+        Please enter user info<span>*</span>
+      </h3>
+
+      <form action="" value="single" id="userinfo-form" name="fred">
+        <div class="answer-column-userinfo">
+          <!-- divs for vertical -->
+          <div class="personal-info">
+            <label class="textbox-label-userinfo" for="a05">
+              <span class="lean spice">FAKE</span> FIRST NAME (S)
+            </label>
+            <textarea
+              name="fred"
+              value=""
+              id="q03a05"
+              class="textbox-userinfo"
+              name="textarea"
+              rows="1"
+              maxlength="50"
+            ></textarea>
+          </div>
+
+          <div class="personal-info">
+            <label class="textbox-label-userinfo" for="a05">
+              <span class="lean spice">FAKE</span> MIDDLE NAME (S)
+            </label>
+            <textarea
+              name="fred"
+              value=""
+              id="q03a05"
+              class="textbox-userinfo"
+              name="textarea"
+              rows="1"
+              maxlength="50"
+            ></textarea>
+          </div>
+
+          <div class="personal-info">
+            <label class="textbox-label-userinfo" for="a05">
+              <span class="lean">FAKE</span> LAST NAME (S)
+            </label>
+            <textarea
+              name="fred"
+              value=""
+              id="q03a05"
+              class="textbox-userinfo"
+              name="textarea"
+              rows="1"
+              maxlength="50"
+            ></textarea>
+          </div>
+        </div>
+
+        <section class="disclaimer">
+          <p>*Disclaimer:</p>
+          <p>We have no desire to know your true identity.</p>
+          <p>But we <span class="lean">do</span> want you to know your answers will be analyzed by the</p>
+          <p>Artist || Officials of "We're Out of Control", and used in future art censuses.</p>
+          <p>By proceeding <span class="lean">you</span> agree to these terms.</p>
+        </section>
+
+        <button type="submit" class="nav nav--proceed-center" value="proceedMultAnswer">
           Proceed
         </button>
+
+        <img src="assets/first-seal-center.png" alt="logo" class="userinfo-logo" />
       </form>
+
     </section>
 
-    <!-- 
-      this section is Structural TEMPLATE for:
-      Declaration of Truth 
-      first 6 steps of the 8-Step Authentication Process 
-    -->
+
+    <!-- Declaration of Truth -->
     <section class="truth view hide">
       <banner class="truth-banner">
         <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
         <div class="camo-circle"></div>
         <div class="truth-banner-text">
-          <p>A moment of</p>
+          <p>Declaration of</p>
           <p>
             TRUTH
             <span class="small-truth">
@@ -101,17 +148,14 @@
       -->
       <form action="" value="single">
         <h3 class="truth-quest-1">
-          If you knowingly or willfully misrepresent or omit a material/personal
-          fact or sumbit a false truth and information with this form, we may or
-          may not deny your entry to the show. In addition, you may or may not
-          face severe penalties provided by law, including criminal prosecution.
+          If you knowingly or willfully misrepresent or omit a material /personal fact or sumbit a false truth and information with this form, we may or may not deny your entry to the show. In addition, you may or may not face severe penalties.
         </h3>
         <p class="speak-truth">I will speak my truth</p>
         <div class="radio-answer-center">
           <!-- spans for horizontal -->
           <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
               value="a01"
@@ -122,7 +166,7 @@
 
           <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
               value="a02"
@@ -133,7 +177,7 @@
 
           <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
               value="a03"
@@ -151,30 +195,17 @@
     <!-- bipocnithity text - certain words toggle -->
     <section class="bipocnithity view hide">
       <h2 id="bipoc-heading">
-        The first two questions are designed to identify your
-        <span class="words">ethnicity</span
-        ><span class="bipoc-text words-gone">BIPOCNITHITY</span> and
-        <span class="words">race</span
-        ><span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
+        <div>
+          The first two questions are designed to identify your
+        </div>
+        <div>
+          <span class="words">ethnicity</span>
+          <span class="bipoc-text words-gone">BIPOCNITHITY</span> and
+          <span class="words">race</span>
+          <span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
+        </div>
       </h2>
-      <form action="" class="mult">
-        <button type="button" class="nav nav--proceed" value="proceed">
-          Proceed
-        </button>
-      </form>
-    </section>
 
-    <!-- 
-      ALTERNATIVE - fills viewport
-      bipocnithity text - certain words toggle -->
-    <section class="bipocnithity-ALT view hide">
-      <h2 id="bipoc-heading-ALT">
-        The first two questions are designed to identify your
-        <span class="words">ethnicity</span
-        ><span class="bipoc-text words-gone">BIPOCNITHITY</span> and
-        <span class="words">race</span
-        ><span class="bipoc-text words-gone">"I DON'T SEE COLOR"</span>.
-      </h2>
       <form action="" class="mult">
         <button type="button" class="nav nav--proceed" value="proceed">
           Proceed
@@ -188,7 +219,7 @@
         <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
         <div class="camo-circle"></div>
         <div class="truth-banner-text">
-          <p>Declaration of</p>
+          <p>A moment of</p>
           <p>
             TRUTH
             <span class="small-truth">
@@ -258,10 +289,9 @@
               value="a03"
               id="q03a03"
             />
-            <label for="a03"
-              >My health doesn't allow it, but uff I like
-              <span class="spice">spice</span></label
-            >
+            <label for="a03">
+              My health doesn't allow it, but uff I like spice
+            </label>
           </div>
         </div>
         <button type="button" class="nav nav--back" value="back">
@@ -463,7 +493,7 @@
               value="a01"
               id="q03a01"
             />
-            <label for="a01">yes</label>
+            <label for="a01">"yes"</label>
           </div>
 
           <div>
@@ -474,7 +504,7 @@
               value="a02"
               id="q03a02"
             />
-            <label for="a02">no</label>
+            <label for="a02">"no"</label>
           </div>
 
           <label class="textbox-label" for="a05"> Explain </label>
@@ -500,7 +530,7 @@
       </form>
     </section>
 
-    <!-- STEP 5 -->
+    <!-- STEP 5a -->
     <section class="truth view hide">
       <banner class="truth-banner">
         <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
@@ -521,66 +551,155 @@
           <div>8-Step</div>
           <div>Authentication Process</div>
         </h3>
-        <p class="question-truth">Step 5: this question is lorem ipsum</p>
-        <div class="radio-answer-column-step-1">
-          <!-- divs for vertical -->
-          <div>
+        <p>
+          <div class="question-truth">
+            Step 5a: LOL or SMH
+          </div>
+          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+        </p>
+        <div class="radio-answer-center">
+          <!-- spans for horizontal -->
+          <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
               value="a01"
               id="q03a01"
             />
-            <label for="a01">No</label>
-          </div>
+            <label for="a01">LOL</label>
+          </span>
 
-          <div>
+          <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
               value="a02"
               id="q03a02"
             />
-            <label for="a02">Yes</label>
-          </div>
+            <label for="a02">SMH</label>
+          </span>
+        </div>
+        <button type="button" class="nav nav--back" value="back">
+          Go Back
+        </button>
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
+          Proceed
+        </button>
+      </form>
+    </section>
 
-          <div>
+    <!-- STEP 5b -->
+    <section class="truth view hide">
+      <banner class="truth-banner">
+        <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
+        <div class="camo-circle"></div>
+        <div class="truth-banner-text">
+          <p>A moment of</p>
+          <p>
+            TRUTH
+            <span class="small-truth">
+              (type truth, nothing but your truth)
+            </span>
+          </p>
+        </div>
+      </banner>
+
+      <form action="" value="single" id="">
+        <h3 class="truth-quest-2">
+          <div>8-Step</div>
+          <div>Authentication Process</div>
+        </h3>
+        <p>
+          <div class="question-truth">
+            Step 5b: LOL or SMH
+          </div>
+          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+        </p>
+        <div class="radio-answer-center">
+          <!-- spans for horizontal -->
+          <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
-              value="a03"
-              id="q03a03"
+              value="a01"
+              id="q03a01"
             />
-            <label for="a03">A little bit on my Dad's side</label>
-          </div>
+            <label for="a01">LOL</label>
+          </span>
 
-          <div>
+          <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
-              value="a03"
-              id="q03a03"
+              value="a02"
+              id="q03a02"
             />
-            <label for="a03">I don't want to disclose</label>
-          </div>
+            <label for="a02">SMH</label>
+          </span>
+        </div>
+        <button type="button" class="nav nav--back" value="back">
+          Go Back
+        </button>
+        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
+          Proceed
+        </button>
+      </form>
+    </section>
 
-          <div>
+    <!-- STEP 5c -->
+    <section class="truth view hide">
+      <banner class="truth-banner">
+        <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
+        <div class="camo-circle"></div>
+        <div class="truth-banner-text">
+          <p>A moment of</p>
+          <p>
+            TRUTH
+            <span class="small-truth">
+              (type truth, nothing but your truth)
+            </span>
+          </p>
+        </div>
+      </banner>
+
+      <form action="" value="single" id="">
+        <h3 class="truth-quest-2">
+          <div>8-Step</div>
+          <div>Authentication Process</div>
+        </h3>
+        <p>
+          <div class="question-truth">
+            Step 5c: LOL or SMH
+          </div>
+          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+        </p>
+        <div class="radio-answer-center">
+          <!-- spans for horizontal -->
+          <span>
             <input
-              class="answer"
+              class="round-btn"
               type="radio"
               name="q03"
-              value="a03"
-              id="q03a03"
+              value="a01"
+              id="q03a01"
             />
-            <label for="a03"
-              >My health doesn't allow it, but uff I like
-              <span class="spice">spice</span></label
-            >
-          </div>
+            <label for="a01">LOL</label>
+          </span>
+
+          <span>
+            <input
+              class="round-btn"
+              type="radio"
+              name="q03"
+              value="a02"
+              id="q03a02"
+            />
+            <label for="a02">SMH</label>
+          </span>
         </div>
         <button type="button" class="nav nav--back" value="back">
           Go Back
@@ -592,97 +711,6 @@
     </section>
 
     <!-- STEP 6 -->
-    <section class="truth view hide">
-      <banner class="truth-banner">
-        <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
-        <div class="camo-circle"></div>
-        <div class="truth-banner-text">
-          <p>A moment of</p>
-          <p>
-            TRUTH
-            <span class="small-truth">
-              (type truth, nothing but your truth)
-            </span>
-          </p>
-        </div>
-      </banner>
-
-      <form action="" value="single" id="">
-        <h3 class="truth-quest-2">
-          <div>8-Step</div>
-          <div>Authentication Process</div>
-        </h3>
-        <p class="question-truth">Step 6: this question is lorem ipsum</p>
-        <div class="radio-answer-column-step-1">
-          <!-- divs for vertical -->
-          <div>
-            <input
-              class="answer"
-              type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
-            />
-            <label for="a01">No</label>
-          </div>
-
-          <div>
-            <input
-              class="answer"
-              type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
-            />
-            <label for="a02">Yes</label>
-          </div>
-
-          <div>
-            <input
-              class="answer"
-              type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
-            />
-            <label for="a03">A little bit on my Dad's side</label>
-          </div>
-
-          <div>
-            <input
-              class="answer"
-              type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
-            />
-            <label for="a03">I don't want to disclose</label>
-          </div>
-
-          <div>
-            <input
-              class="answer"
-              type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
-            />
-            <label for="a03"
-              >My health doesn't allow it, but uff I like
-              <span class="spice">spice</span></label
-            >
-          </div>
-        </div>
-        <button type="button" class="nav nav--back" value="back">
-          Go Back
-        </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
-          Proceed
-        </button>
-      </form>
-    </section>
-
-    <!-- STEP 7 -->
     <section class="truth view hide">
       <banner class="truth-banner">
         <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
@@ -702,7 +730,7 @@
           <div>Authentication Process</div>
         </h3>
         <p class="question-personal-truth">
-          Step 7:
+          Step 6:
           <span class="personal-truth">PERSONAL INFORMATION SECTION</span>
         </p>
         <p class="small-red-truth">Please be honest</p>
@@ -835,7 +863,7 @@
       </form>
     </section>
 
-    <!-- STEP 8 -->
+    <!-- STEP 7 -->
     <section class="truth view hide">
       <banner class="truth-banner">
         <img src="assets/first-seal-center.png" alt="logo" class="logo-3" />
@@ -855,7 +883,7 @@
           <div>Authentication Process</div>
         </h3>
         <p class="question-personal-truth">
-          Step 8:
+          Step 7:
           <span class="personal-truth">PERSONAL INFORMATION SECTION</span>
         </p>
         <p class="small-red-truth">Please be honest</p>

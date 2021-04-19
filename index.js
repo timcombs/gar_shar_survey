@@ -26,13 +26,11 @@ other01.addEventListener('change', handleOther);
 
 // grab the heading for the bipocnithity text to toggle it
 const bipocHeading = document.getElementById('bipoc-heading');
-const bipocHeadingALT = document.getElementById('bipoc-heading-ALT');
 
 // this toggles the words in the bipocHeading
 setInterval(function () {
   toggleWords(bipocHeading);
-  toggleWords(bipocHeadingALT);
-}, 1000);
+}, 1500);
 
 function handleOther(e) {
   let textbox = document.getElementById('q03a05');
@@ -68,6 +66,7 @@ function handleNavigation(e) {
   // add values to object
 
   let btnClicked = e.currentTarget;
+  e.preventDefault();
 
   function hideThe(node) {
     node.classList.add('hide');
@@ -97,6 +96,16 @@ function handleNavigation(e) {
     console.log('proceedSingleAnswer');
   } else if (btnClicked.value === 'proceedMultAnswer') {
     let current = btnClicked.parentElement.parentElement;
+    let name = btnClicked.parentElement.name;
+
+    const questions = document.getElementsByName(name);
+
+    for (let i = 1; i < questions.length; i++) {
+      // if (questions[i].value === '') {
+      //   return;
+      // }
+    }
+
     hideThe(current);
 
     let next = current.nextElementSibling;
@@ -173,45 +182,54 @@ function handleViewSwitch(e) {
 }
 
 function toggleWords(bipocHeading) {
-  if (bipocHeading.firstElementChild.classList[0] === 'words') {
-    // remove the bland words
-    bipocHeading.firstElementChild.classList.add('words-gone');
-    bipocHeading.firstElementChild.classList.remove('words');
-    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
+  console.log('heading', bipocHeading.firstElementChild.nextElementSibling);
+  if (
+    bipocHeading.lastElementChild.firstElementChild.classList[0] === 'words'
+  ) {
+    // remove the bland words - 1st and 3rd span
+    bipocHeading.lastElementChild.firstElementChild.classList.add('words-gone');
+    bipocHeading.lastElementChild.firstElementChild.classList.remove('words');
+    bipocHeading.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
       'words-gone'
     );
-    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
+    bipocHeading.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
       'words'
     );
 
-    // add the spicy words
-    bipocHeading.firstElementChild.nextElementSibling.classList.add('words');
-    bipocHeading.firstElementChild.nextElementSibling.classList.remove(
+    // add the spicy words - 2nd & 4th span
+    bipocHeading.lastElementChild.lastElementChild.classList.add('words');
+    bipocHeading.lastElementChild.lastElementChild.classList.remove(
       'words-gone'
     );
-    bipocHeading.lastElementChild.classList.add('words');
-    bipocHeading.lastElementChild.classList.remove('words-gone');
+    bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.add(
+      'words'
+    );
+    bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.remove(
+      'words-gone'
+    );
   } else {
-    // add the bland words
-    bipocHeading.firstElementChild.classList.remove('words-gone');
-    bipocHeading.firstElementChild.classList.add('words');
-    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
+    // add the bland words - 1st and 3rd span
+    bipocHeading.lastElementChild.firstElementChild.classList.add('words');
+    bipocHeading.lastElementChild.firstElementChild.classList.remove(
       'words-gone'
     );
-    bipocHeading.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
+    bipocHeading.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
       'words'
     );
-
-    // remove the spicy words
-    bipocHeading.firstElementChild.nextElementSibling.classList.add(
+    bipocHeading.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
       'words-gone'
     );
-    bipocHeading.firstElementChild.nextElementSibling.classList.remove('words');
-    bipocHeading.lastElementChild.classList.add('words-gone');
-    bipocHeading.lastElementChild.classList.remove('words');
+
+    // remove the spicy words - 2nd & 4th span
+    bipocHeading.lastElementChild.lastElementChild.classList.add('words-gone');
+    bipocHeading.lastElementChild.lastElementChild.classList.remove('words');
+    bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.add(
+      'words-gone'
+    );
+    bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.remove(
+      'words'
+    );
   }
-  // bipocHeading.firstElementChild.innerHTML = 'Clown';
-  // bipocHeading.lastElementChild.innerHTML = 'Barsoom';
 }
 
 // function handleFormSubmit(e) {
