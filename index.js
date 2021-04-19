@@ -1,23 +1,27 @@
 // this holds all the data from the survey
 const surveyAnswers = {
-  q01: '',
-  q02: '',
-  q03: '',
-  q04: '',
-  q05: '',
-  q06: '',
-  q07: '',
-  q08: '',
-  q09: '',
-  q10: '',
-  q11: '',
-  q12: '',
-  q13: '',
-  q14: '',
-  q15: '',
-  q16: '',
-  q17: '',
-  code: '',
+  first: '',
+  middle: '',
+  last: '',
+  declaration: '',
+  step-1: '',
+  step-2: '',
+  step-3: '',
+  step-3-text: '',
+  step-4: '',
+  step-4-text: '',
+  step-5a: '',
+  step-5b: '',
+  step-5c: '',
+  step-6a: '',
+  step-6b: '',
+  step-6c: '',
+  step-6d: '',
+  step-7a: '',
+  step-7b: '',
+  step-7c: '',
+  step-7d: '',
+  step-8-text: ''
 };
 
 // first other - activate textbox
@@ -60,7 +64,7 @@ console.log(views);
 // proceed buttons should have a value to handle this!!!!
 // value = proceedSingleAnswer
 // value = proceedMultAnswer
-// so more conditionals!!
+// so bigger handleNavigation conditional!!
 
 function handleNavigation(e) {
   // add values to object
@@ -111,24 +115,6 @@ function handleNavigation(e) {
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceedMultAnswer');
-  } else if (btnClicked.value === 'proceedMultAnswerRebellion') {
-    let current = btnClicked.parentElement.parentElement;
-    let name = btnClicked.parentElement.name;
-
-    const questions = document.getElementsByName(name);
-
-    for (let i = 1; i < questions.length; i++) {
-      // if (questions[i].value === '') {
-      //   return;
-      // }
-    }
-
-    hideThe(current);
-
-    let next = current.nextElementSibling;
-    showThe(next);
-    console.log('proceedMultAnswerRebellion');
-    sentenceFadeIn();
   } else if (btnClicked.value === 'back') {
     let current = btnClicked.parentElement.parentElement;
     hideThe(current);
@@ -183,20 +169,6 @@ function handleAnswerSubmit(e) {
   console.log(surveyAnswers, 'answers');
 }
 
-function handleViewSwitch(e) {
-  e.preventDefault();
-
-  if (true) {
-    // put values into object
-    // hide current view
-    // show next view
-  } else if (false) {
-    // put values into object
-    // hide current view
-    // show previous view
-  }
-}
-
 function toggleWords(bipocHeading) {
   if (
     bipocHeading.lastElementChild.firstElementChild.classList[0] === 'words'
@@ -244,40 +216,6 @@ function toggleWords(bipocHeading) {
     bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.remove(
       'words'
     );
-  }
-}
-
-function sentenceFadeIn() {
-  let str1 = 'carried on the felt tip of an evening sunset';
-  let str2 = 'Images slashing between the language of reality';
-  let count = 0;
-  let bucketContent = '';
-  let bucket1 = document.getElementById('rebellion-phrase-1');
-  let bucket2 = document.getElementById('rebellion-phrase-2');
-  let curr = 1;
-  let currStr;
-
-  let nIntervId = window.setInterval(addLetter, 125, str1, str2, currStr, curr);
-
-  function addLetter(str1, str2, currStr, curr) {
-    if (curr == 1) {
-      currStr = str1;
-    } else if (count > currStr.length - 2) {
-      count = 0;
-      bucketContent = '';
-      bucket1 = bucket2;
-      curr = 2;
-      currStr = str2;
-    } else if (curr === 2 && count > currStr.length - 2) {
-      clearInterval(nIntervId);
-    }
-
-    console.log(currStr);
-    console.log(count);
-    bucket1.innerHTML = bucketContent + currStr[count];
-
-    bucketContent = bucket1.innerHTML;
-    count += 1;
   }
 }
 
