@@ -289,6 +289,7 @@ function onYouTubePlayerAPIReady() {
 
 // play mayoVideo on radio button change
 function startVid() {
+  alert('hello!');
   if (once) {
     return;
   }
