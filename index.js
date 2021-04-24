@@ -295,6 +295,7 @@ function startVid() {
   mayoBucket.classList.remove('hideVid');
   mayoBucket.classList.add('showVid');
 
+  console.log(mayoPlayer);
   mayoPlayer.playVideo();
 }
 
