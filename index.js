@@ -301,8 +301,8 @@ function startVid() {
 // when mayo video ends
 function onPlayerStateChange(e) {
   if (e.data === 0) {
-    tiktokBucket.classList.add('hideVid');
-    tiktokBucket.classList.remove('showVid');
+    mayoBucket.classList.add('hideVid');
+    mayoBucket.classList.remove('showVid');
     once = true;
   }
 }
