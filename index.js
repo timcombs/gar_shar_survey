@@ -44,14 +44,14 @@ for (let i = 0; i < mayoBtns.length; i++) {
   mayoBtns[i].addEventListener('click', startVid);
 }
 
-// get the radio buttons so you can stop the tik tok video
-const tiktokBtns = document.getElementsByClassName('tiktokvid');
-console.log(tiktokBtns);
-const tiktokBucket = document.getElementById('youtube');
+// // get the radio buttons so you can stop the tik tok video
+// const tiktokBtns = document.getElementsByClassName('tiktokvid');
+// console.log(tiktokBtns);
+// const tiktokBucket = document.getElementById('youtube');
 
-for (let i = 0; i < tiktokBtns.length; i++) {
-  tiktokBtns[i].addEventListener('click', stopVid);
-}
+// for (let i = 0; i < tiktokBtns.length; i++) {
+//   tiktokBtns[i].addEventListener('click', stopVid);
+// }
 
 function handleOther(e) {
   let textbox = document.getElementById('q03a05');
@@ -292,8 +292,8 @@ function startVid() {
   if (once) {
     return;
   }
-  vidBucket.classList.remove('hideVid');
-  vidBucket.classList.add('showVid');
+  mayoBucket.classList.remove('hideVid');
+  mayoBucket.classList.add('showVid');
 
   mayoPlayer.playVideo();
 }
@@ -301,50 +301,50 @@ function startVid() {
 // when mayo video ends
 function onPlayerStateChange(e) {
   if (e.data === 0) {
-    vidBucket.classList.add('hideVid');
-    vidBucket.classList.remove('showVid');
+    tiktokBucket.classList.add('hideVid');
+    tiktokBucket.classList.remove('showVid');
     once = true;
   }
 }
 
-// make embedded youtube video play & loop hide for tiktok video
-var tiktokPlayer;
-const vw = Math.max(
-  document.documentElement.clientWidth || 0,
-  window.innerWidth || 0
-);
-const vh = Math.max(
-  document.documentElement.clientHeight || 0,
-  window.innerHeight || 0
-);
+// // make embedded youtube video play & loop hide for tiktok video
+// var tiktokPlayer;
+// const vw = Math.max(
+//   document.documentElement.clientWidth || 0,
+//   window.innerWidth || 0
+// );
+// const vh = Math.max(
+//   document.documentElement.clientHeight || 0,
+//   window.innerHeight || 0
+// );
 
-const vidWidth = vw * 0.3;
-const vidHeight = vidWidth / 0.61;
+// const vidWidth = vw * 0.3;
+// const vidHeight = vidWidth / 0.61;
 
-console.log(vidWidth, vidHeight, 'wid ht');
+// console.log(vidWidth, vidHeight, 'wid ht');
 
-function onYouTubePlayerAPIReady() {
-  tiktokPlayer = new YT.Player('tiktokPlayer', {
-    videoId: 'J9uIhKmzQvY',
-    height: vidHeight,
-    width: vidWidth,
-    events: {
-      onStateChange: onPlayerStateChange,
-    },
-  });
-}
+// function onYouTubePlayerAPIReady() {
+//   tiktokPlayer = new YT.Player('tiktokPlayer', {
+//     videoId: 'J9uIhKmzQvY',
+//     height: vidHeight,
+//     width: vidWidth,
+//     events: {
+//       onStateChange: onTikTokPlayerStateChange,
+//     },
+//   });
+// }
 
-// stop tiktok video on radio button change
-function stopVid() {
-  console.log('in stop vid');
-  tiktokPlayer.stopVideo();
-}
+// // stop tiktok video on radio button change
+// function stopVid() {
+//   console.log('in stop vid');
+//   tiktokPlayer.stopVideo();
+// }
 
-// when tiktok video ends
-function onPlayerStateChange(e) {
-  if (e.data === 0) {
-    tiktokPlayer.playVideo();
-  }
-}
+// // when tiktok video ends
+// function onTikTokPlayerStateChange(e) {
+//   if (e.data === 0) {
+//     tiktokPlayer.playVideo();
+//   }
+// }
 
 // https://www.youtube.com/watch?v=J9uIhKmzQvY

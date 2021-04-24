@@ -443,11 +443,6 @@ input[type='radio']:checked::before {
   /* font-weight: 700; */
 }
 
-.embed {
-  margin: 0 auto;
-  width: 50%;
-}
-
 .radio-answer-column-step-1 {
   /* waiting to move/size questions */
   font-family: 'Montserrat', sans-serif;
