@@ -24,9 +24,16 @@ const surveyAnswers = {
   step_8_text: '',
 };
 
-// first other - activate textbox
-const other01 = document.getElementById('q03');
-other01.addEventListener('change', handleOther);
+// first textarea - activate textbox if other radio button is clicked
+const others = document.getElementsByClassName('step_3');
+for (let i = 0; i < others.length; i++) {
+  others[i].addEventListener('change', handleOthers);
+}
+
+// second textarea - activate textbox if other radio button is clicked
+const noOthers = document.getElementsByClassName('step_4');
+let secondTextbox = document.getElementById('step_4_textarea');
+secondTextbox.value = ''; // to make sure textarea is empty
 
 // grab the heading for the bipocnithity text to toggle it
 const bipocHeading = document.getElementById('bipoc-heading');
@@ -37,12 +44,12 @@ setInterval(function () {
 }, 1500);
 
 // get the radio buttons so you can play the video & container that holds vid
-const mayoBtns = document.getElementsByClassName('mayovid');
-const mayoBucket = document.getElementById('youtube');
+// const mayoBtns = document.getElementsByClassName('mayovid');
+// const mayoBucket = document.getElementById('youtube');
 
-for (let i = 0; i < mayoBtns.length; i++) {
-  mayoBtns[i].addEventListener('click', startVid);
-}
+// for (let i = 0; i < mayoBtns.length; i++) {
+//   mayoBtns[i].addEventListener('click', startVid);
+// }
 
 // // get the radio buttons so you can stop the tik tok video
 // const tiktokBtns = document.getElementsByClassName('tiktokvid');
@@ -53,16 +60,18 @@ for (let i = 0; i < mayoBtns.length; i++) {
 //   tiktokBtns[i].addEventListener('click', stopVid);
 // }
 
-function handleOther(e) {
-  let textbox = document.getElementById('q03a05');
+function handleOthers(e) {
+  console.log('in handleOthers');
+  let textbox = document.getElementById('step_3_textarea');
 
-  if (e.target.id === 'q03a02') {
-    textbox.removeAttribute('disabled');
+  if (e.target.id === 'step_3_other') {
+    textbox.value = '';
+    textbox.disabled = false;
     textbox.setAttribute('placeholder', 'Explain Yourself!');
   } else {
-    textbox.setAttribute('disabled', true);
+    textbox.disabled = true;
     textbox.removeAttribute('placeholder');
-    textbox.value = '';
+    textbox.value = 'n/a';
   }
 }
 
@@ -76,20 +85,15 @@ for (let view = 0; view < views.length; view++) {
 }
 
 // grab all the LOL/SMH buttons & add event listeners
-const lolViews = document.getElementsByClassName('nav');
+const lolViews = document.getElementsByClassName('lol');
 for (let lolView = 0; lolView < lolViews.length; lolView++) {
   lolViews[lolView].addEventListener('click', handleNavigation);
 }
 
-// console.log(views);
-
 // TODO: HOWTO handle updating the object with the answers?
-// not every view has a form
-// proceed buttons should have a value to handle this!!!!
-// value = proceedSingleAnswer
-// value = proceedMultAnswer
-// so bigger handleNavigation conditional!!
-
+// ********************** NAVIGATION *******************
+// proceed buttons & lol/smh buttons have a value that
+// corresponds to specific functionality for each view
 function handleNavigation(e) {
   // add values to object
 
@@ -99,13 +103,11 @@ function handleNavigation(e) {
   function hideThe(node) {
     node.classList.add('hide');
     node.classList.remove('show');
-    console.log('hide the', node);
   }
 
   function showThe(node) {
     node.classList.remove('hide');
     node.classList.add('show');
-    console.log('show the', node);
   }
 
   if (btnClicked.value === 'proceed') {
@@ -117,11 +119,62 @@ function handleNavigation(e) {
     console.log('proceed');
   } else if (btnClicked.value === 'proceedSingleAnswer') {
     let current = btnClicked.parentElement.parentElement;
+    let question = btnClicked.parentElement.name;
+    let answer = document.querySelector(`input[name="${question}"]:checked`)
+      .value;
+
+    // if no answer, no proceeding to next view
+    // if (answer === '') {
+    //   return;
+    // }
+
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceedSingleAnswer');
+  } else if (btnClicked.value === 'lol' || btnClicked.value === 'smh') {
+    console.log('in the lol answer');
+    let current =
+      btnClicked.parentElement.parentElement.parentElement.parentElement;
+    console.log(current);
+    let question = btnClicked.name;
+    let answer = document.querySelector(`input[name="${question}"]:checked`);
+
+    if (answer.value === '') {
+      return;
+    }
+
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedSingleAnswer');
+  } else if (btnClicked.value === 'proceedOtherAnswer') {
+    let current = btnClicked.parentElement.parentElement;
+    let question = btnClicked.parentElement.name;
+    let answer = document.querySelector(`input[name="${question}"]:checked`);
+
+    if (current.firstElementChild.nextElementSibling.name === 'step_3') {
+      for (let i = 0; i < others.length; i++) {
+        if (answer.value === '' || others[i].value === '') {
+          return;
+        }
+      }
+    } else {
+      console.log('noOthers', noOthers);
+      for (let i = 0; i < noOthers.length; i++) {
+        if (answer.value === '' || noOthers[i].value === '') {
+          return;
+        }
+      }
+    }
+
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedOtherAnswer');
   } else if (btnClicked.value === 'proceedMultAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let name = btnClicked.parentElement.name;
@@ -139,6 +192,23 @@ function handleNavigation(e) {
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceedMultAnswer');
+  } else if (btnClicked.value === 'proceedMultTextAnswer') {
+    let current = btnClicked.parentElement.parentElement;
+    let name = btnClicked.parentElement.name;
+
+    const questions = document.getElementsByName(name);
+
+    for (let i = 1; i < questions.length; i++) {
+      // if (questions[i].value === '') {
+      //   return;
+      // }
+    }
+
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedMultTextAnswer');
   } else if (btnClicked.value === 'back') {
     let current = btnClicked.parentElement.parentElement;
     hideThe(current);
@@ -275,38 +345,38 @@ function toggleWords(bipocHeading) {
   </div> */
 
 // make embedded youtube video play then hide for mayo video
-var mayoPlayer;
-let once = false;
+// var mayoPlayer;
+// let once = false;
 
-function onYouTubePlayerAPIReady() {
-  mayoPlayer = new YT.Player('mayoPlayer', {
-    videoId: '3kDlFdUrOtk',
-    events: {
-      onStateChange: onPlayerStateChange,
-    },
-  });
-}
+// function onYouTubePlayerAPIReady() {
+//   mayoPlayer = new YT.Player('mayoPlayer', {
+//     videoId: '3kDlFdUrOtk',
+//     events: {
+//       onStateChange: onPlayerStateChange,
+//     },
+//   });
+// }
 
-// play mayoVideo on radio button change
-function startVid() {
-  if (once) {
-    return;
-  }
-  mayoBucket.classList.remove('hideVid');
-  mayoBucket.classList.add('showVid');
+// // play mayoVideo on radio button change
+// function startVid() {
+//   if (once) {
+//     return;
+//   }
+//   mayoBucket.classList.remove('hideVid');
+//   mayoBucket.classList.add('showVid');
 
-  console.log(mayoPlayer);
-  mayoPlayer.playVideo();
-}
+//   // console.log(mayoPlayer);
+//   mayoPlayer.playVideo();
+// }
 
-// when mayo video ends
-function onPlayerStateChange(e) {
-  if (e.data === 0) {
-    mayoBucket.classList.add('hideVid');
-    mayoBucket.classList.remove('showVid');
-    once = true;
-  }
-}
+// // when mayo video ends
+// function onPlayerStateChange(e) {
+//   if (e.data === 0) {
+//     mayoBucket.classList.add('hideVid');
+//     mayoBucket.classList.remove('showVid');
+//     once = true;
+//   }
+// }
 
 // // make embedded youtube video play & loop hide for tiktok video
 // var tiktokPlayer;

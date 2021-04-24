@@ -19,7 +19,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <script async src="https://www.tiktok.com/embed.js"></script>
   </head>
 
     <!-- 
@@ -119,7 +118,7 @@
           <p>By proceeding <span class="lean">you</span> agree to these terms.</p>
         </section>
 
-        <button type="submit" class="nav nav--proceed-center" value="proceedMultAnswer">
+        <button type="submit" class="nav nav--proceed-center" value="proceedMultTextAnswer">
           Proceed
         </button>
 
@@ -149,7 +148,7 @@
         id on the form is the question number
         corresponding to object submitted to google sheet
       -->
-      <form action="" value="single">
+      <form action="" value="single" name="declaration">
         <h3 class="truth-quest-1">
           If you knowingly or willfully misrepresent or omit a material /personal fact or sumbit a false truth and information with this form, we may or may not deny your entry to the show. In addition, you may or may not face severe penalties.
         </h3>
@@ -160,33 +159,33 @@
             <input
               class="round-btn"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="declaration"
+              value="yes"
+              id="declaration-yes"
             />
-            <label for="a01">yes</label>
+            <label for="declaration-yes">yes</label>
           </span>
 
           <span>
             <input
               class="round-btn"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="declaration"
+              value="no"
+              id="declaration-no"
             />
-            <label for="a02">no</label>
+            <label for="declaration-no">no</label>
           </span>
 
           <span>
             <input
               class="round-btn"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="declaration"
+              value="maybe"
+              id="declaration-maybe"
             />
-            <label for="a03">maybe</label>
+            <label for="declaration-maybe">maybe</label>
           </span>
         </div>
         <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
@@ -232,7 +231,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_1">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -244,55 +243,55 @@
             <input
               class="answer"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_1"
+              value="No"
+              id="step_1_no"
             />
-            <label for="a01">No</label>
+            <label for="step_1_no">No</label>
           </div>
 
           <div>
             <input
               class="answer"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_1"
+              value="Yes"
+              id="step_1_yes"
             />
-            <label for="a02">Yes</label>
+            <label for="step_1_yes">Yes</label>
           </div>
 
           <div>
             <input
               class="answer"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="step_1"
+              value="A little bit on my Dad's side"
+              id="step_1_a_little"
             />
-            <label for="a03">A little bit on my Dad's side</label>
+            <label for="step_1_a_little">A little bit on my Dad's side</label>
           </div>
 
           <div>
             <input
               class="answer"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="step_1"
+              value="I don't want to disclose"
+              id="step_1_no_disclose"
             />
-            <label for="a03">I don't want to disclose</label>
+            <label for="step_1_no_disclose">I don't want to disclose</label>
           </div>
 
           <div>
             <input
               class="answer"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="step_1"
+              value="My health doesn't allow it, but uff I like spice"
+              id="step_1_spice"
             />
-            <label for="a03">
+            <label for="step_1_spice">
               My health doesn't allow it, but uff I like spice
             </label>
           </div>
@@ -322,7 +321,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_2">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -334,22 +333,22 @@
             <input
               class="answer mayovid"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_2"
+              value="Mayo-Saxon or Aiolinordic"
+              id="step_2_mayo"
             />
-            <label for="a01">Mayo-Saxon or Aiolinordic</label>
+            <label for="step_2_mayo">Mayo-Saxon or Aiolinordic</label>
           </div>
 
           <div>
             <input
               class="answer mayovid"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_2"
+              value="Non Mayo-Saxon or Aiolinordic"
+              id="step_2_non"
             />
-            <label for="a02">Non Mayo-Saxon or Aiolinordic</label>
+            <label for="step_2_non">Non Mayo-Saxon or Aiolinordic</label>
           </div>
         </div>
         <button type="button" class="nav nav--back" value="back">
@@ -388,7 +387,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_3">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -400,61 +399,59 @@
           <!-- divs for vertical -->
           <div>
             <input
-              class="answer"
+              class="answer step_3"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_3"
+              value="yes, we are mayo-saxons"
+              id="step_3_yesmayo"
             />
-            <label for="a01">yes, we are mayo-saxons</label>
+            <label for="step_3_yesmayo">yes, we are mayo-saxons</label>
           </div>
 
           <div>
             <input
-              class="answer"
+              class="answer step_3"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_3"
+              value="yes, but we are not mayo-saxons"
+              id="step_3_yesnotmayo"
             />
-            <label for="a02">yes, but we are not mayo-saxons</label>
+            <label for="step_3_yesnotmayo">yes, but we are not mayo-saxons</label>
           </div>
 
           <div>
             <input
-              class="answer"
+              class="answer step_3"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="step_3"
+              value="no, even though we are mayo-saxons"
+              id="step_3_nomay"
             />
             <label for="a03">no, even though we are mayo-saxons</label>
           </div>
 
           <div>
             <input
-              class="answer"
+              class="answer step_3"
               type="radio"
-              name="q03"
-              value="a03"
-              id="q03a03"
+              name="step_3"
+              value="other"
+              id="step_3_other"
             />
-            <label for="a03">other</label>
+            <label for="step_3_other">other</label>
           </div>
 
-          <label class="textbox-label" for="a05">
+          <label class="textbox-label" for="step_3_textarea">
             if other, please go into depth but not too much depth
           </label>
           <div>
             <textarea
-              name="q03"
-              value="a05"
-              id="q03a05"
-              class="textbox"
-              name="textarea"
+              name="step_3_text"
+              id="step_3_textarea"
+              class="textbox step_3"
               rows="2"
               maxlength="100"
-              disabled="true"
+              disabled
             >
             </textarea>
           </div>
@@ -462,7 +459,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
+        <button type="button" class="nav nav--proceed" value="proceedOtherAnswer">
           Proceed
         </button>
       </form>
@@ -484,7 +481,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_4">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -494,34 +491,32 @@
           <!-- divs for vertical -->
           <div>
             <input
-              class="answer"
+              class="answer step_4"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_4"
+              value="yes"
+              id="step_4_yes"
             />
-            <label for="a01">"yes"</label>
+            <label for="step_4_yes">"yes"</label>
           </div>
 
           <div>
             <input
-              class="answer"
+              class="answer step_4"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_4"
+              value="no"
+              id="step_4_no"
             />
-            <label for="a02">"no"</label>
+            <label for="step_4_no">"no"</label>
           </div>
 
-          <label class="textbox-label" for="a05"> Explain </label>
+          <label class="textbox-label" for="step_4_textarea"> Explain </label>
           <div>
             <textarea
-              name="q03"
-              value="a05"
-              id="q03a05"
-              class="textbox"
-              name="textarea"
+              name="step_4_text"
+              id="step_4_textarea"
+              class="textbox step_4"
               rows="3"
               maxlength="150"
             >
@@ -531,7 +526,7 @@
         <button type="button" class="nav nav--back" value="back">
           Go Back
         </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
+        <button type="button" class="nav nav--proceed" value="proceedOtherAnswer">
           Proceed
         </button>
       </form>
@@ -553,7 +548,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_5a">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -568,32 +563,26 @@
           <!-- spans for horizontal -->
           <span>
             <input
-              class="round-btn"
+              class="round-btn lol"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_5a"
+              value="lol"
+              id="step_5a_lol"
             />
-            <label for="a01" class="lean">LOL</label>
+            <label for="step_5a_lol" class="lean">LOL</label>
           </span>
 
           <span>
             <input
-              class="round-btn"
+              class="round-btn lol"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_5a"
+              value="smh"
+              id="step_5a_smh"
             />
-            <label for="a02" class="lean">SMH</label>
+            <label for="step_5a_smh" class="lean">SMH</label>
           </span>
         </div>
-        <button type="button" class="nav nav--back" value="back">
-          Go Back
-        </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
-          Proceed
-        </button>
       </form>
     </section>
 
@@ -613,7 +602,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_5b">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -632,32 +621,26 @@
           <!-- spans for horizontal -->
           <span>
             <input
-              class="round-btn tiktokvid"
+              class="round-btn lol tiktokvid"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_5b"
+              value="lol"
+              id="step_5b_lol"
             />
-            <label for="a01" class="lean">LOL</label>
+            <label for="step_5b_lol" class="lean">LOL</label>
           </span>
 
           <span>
             <input
-              class="round-btn tiktokvid"
+              class="round-btn lol tiktokvid"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_5b"
+              value="smh"
+              id="step_5b_smh"
             />
-            <label for="a02" class="lean">SMH</label>
+            <label for="step_5b_smh" class="lean">SMH</label>
           </span>
         </div>
-        <button type="button" class="nav nav--back" value="back">
-          Go Back
-        </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
-          Proceed
-        </button>
       </form>
     </section>
 
@@ -677,7 +660,7 @@
         </div>
       </banner>
 
-      <form action="" value="single" id="">
+      <form action="" value="single" name="step_5c">
         <h3 class="truth-quest-2">
           <div>8-Step</div>
           <div>Authentication Process</div>
@@ -692,32 +675,26 @@
           <!-- spans for horizontal -->
           <span>
             <input
-              class="round-btn"
+              class="round-btn lol"
               type="radio"
-              name="q03"
-              value="a01"
-              id="q03a01"
+              name="step_5c"
+              value="lol"
+              id="step_5c_lol"
             />
-            <label for="a01" class="lean">LOL</label>
+            <label for="step_5c_lol" class="lean">LOL</label>
           </span>
 
           <span>
             <input
-              class="round-btn"
+              class="round-btn lol"
               type="radio"
-              name="q03"
-              value="a02"
-              id="q03a02"
+              name="step_5c"
+              value="smh"
+              id="step_5c_smh"
             />
-            <label for="a02" class="lean">SMH</label>
+            <label for="step_5c_smh" class="lean">SMH</label>
           </span>
         </div>
-        <button type="button" class="nav nav--back" value="back">
-          Go Back
-        </button>
-        <button type="button" class="nav nav--proceed" value="proceedSingleAnswer">
-          Proceed
-        </button>
       </form>
     </section>
 
