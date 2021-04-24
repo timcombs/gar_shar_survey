@@ -36,6 +36,23 @@ setInterval(function () {
   toggleWords(bipocHeading);
 }, 1500);
 
+// get the radio buttons so you can play the video & container that holds vid
+const mayoBtns = document.getElementsByClassName('mayovid');
+const mayoBucket = document.getElementById('youtube');
+
+for (let i = 0; i < mayoBtns.length; i++) {
+  mayoBtns[i].addEventListener('click', startVid);
+}
+
+// get the radio buttons so you can stop the tik tok video
+const tiktokBtns = document.getElementsByClassName('tiktokvid');
+console.log(tiktokBtns);
+const tiktokBucket = document.getElementById('youtube');
+
+for (let i = 0; i < tiktokBtns.length; i++) {
+  tiktokBtns[i].addEventListener('click', stopVid);
+}
+
 function handleOther(e) {
   let textbox = document.getElementById('q03a05');
 
@@ -52,12 +69,19 @@ function handleOther(e) {
 // ------------handle the navigation buttons - every page
 // ------------maybe make this into a switch statement later?
 
-// grab all the navigation buttons & add event listener
+// grab all the back/proceed/submit buttons & add event listener
 const views = document.getElementsByClassName('nav');
 for (let view = 0; view < views.length; view++) {
   views[view].addEventListener('click', handleNavigation);
 }
-console.log(views);
+
+// grab all the LOL/SMH buttons & add event listeners
+const lolViews = document.getElementsByClassName('nav');
+for (let lolView = 0; lolView < lolViews.length; lolView++) {
+  lolViews[lolView].addEventListener('click', handleNavigation);
+}
+
+// console.log(views);
 
 // TODO: HOWTO handle updating the object with the answers?
 // not every view has a form
@@ -249,3 +273,78 @@ function toggleWords(bipocHeading) {
   <div>
     <button type="submit">Submit</button>
   </div> */
+
+// make embedded youtube video play then hide for mayo video
+var mayoPlayer;
+let once = false;
+
+function onYouTubePlayerAPIReady() {
+  mayoPlayer = new YT.Player('mayoPlayer', {
+    videoId: '3kDlFdUrOtk',
+    events: {
+      onStateChange: onPlayerStateChange,
+    },
+  });
+}
+
+// play mayoVideo on radio button change
+function startVid() {
+  if (once) {
+    return;
+  }
+  vidBucket.classList.remove('hideVid');
+  vidBucket.classList.add('showVid');
+
+  mayoPlayer.playVideo();
+}
+
+// when mayo video ends
+function onPlayerStateChange(e) {
+  if (e.data === 0) {
+    vidBucket.classList.add('hideVid');
+    vidBucket.classList.remove('showVid');
+    once = true;
+  }
+}
+
+// make embedded youtube video play & loop hide for tiktok video
+var tiktokPlayer;
+const vw = Math.max(
+  document.documentElement.clientWidth || 0,
+  window.innerWidth || 0
+);
+const vh = Math.max(
+  document.documentElement.clientHeight || 0,
+  window.innerHeight || 0
+);
+
+const vidWidth = vw * 0.3;
+const vidHeight = vidWidth / 0.61;
+
+console.log(vidWidth, vidHeight, 'wid ht');
+
+function onYouTubePlayerAPIReady() {
+  tiktokPlayer = new YT.Player('tiktokPlayer', {
+    videoId: 'J9uIhKmzQvY',
+    height: vidHeight,
+    width: vidWidth,
+    events: {
+      onStateChange: onPlayerStateChange,
+    },
+  });
+}
+
+// stop tiktok video on radio button change
+function stopVid() {
+  console.log('in stop vid');
+  tiktokPlayer.stopVideo();
+}
+
+// when tiktok video ends
+function onPlayerStateChange(e) {
+  if (e.data === 0) {
+    tiktokPlayer.playVideo();
+  }
+}
+
+// https://www.youtube.com/watch?v=J9uIhKmzQvY

@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script async src="https://www.tiktok.com/embed.js"></script>
   </head>
 
     <!-- 
@@ -31,12 +32,13 @@
       clicking logo leads to view #1 - authentication step #1
     -->
     <section class="splash view">
-      <img src="assets/first-seal.png" class="logo-1" alt="logo" />
-      <img
-        src="assets/first-seal-center.png"
-        alt="logo-center"
-        class="logo-2"
-      />
+      <div class="seal-container">
+        <img src="assets/first-seal.png" class="logo-1" alt="logo" />
+        <img
+          src="assets/first-seal-center.png"
+          alt="logo-center"
+          class="logo-2" />
+      </div>
       <form action="" class="">
         <button
           type="button"
@@ -328,7 +330,7 @@
           <!-- divs for vertical -->
           <div>
             <input
-              class="answer"
+              class="answer mayovid"
               type="radio"
               name="q03"
               value="a01"
@@ -339,7 +341,7 @@
 
           <div>
             <input
-              class="answer"
+              class="answer mayovid"
               type="radio"
               name="q03"
               value="a02"
@@ -362,6 +364,10 @@
         other non-identified mayo-saxon subgroups by the year 2088, as part of
         the "campaign for diversity and inclusion". and equity, of course.
       </aside>
+
+      <div id="youtube" class="hideVid">
+        <div id="mayoPlayer"></div>
+      </div>
     </section>
 
     <!-- STEP 3 -->
@@ -554,7 +560,7 @@
           <div class="question-truth">
             Step 5a: LOL or SMH
           </div>
-          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+          <img class="step5a-img" src="assets/stpstp-tweet.png" alt="camo pic" />
         </p>
         <div class="radio-answer-center">
           <!-- spans for horizontal -->
@@ -566,7 +572,7 @@
               value="a01"
               id="q03a01"
             />
-            <label for="a01">LOL</label>
+            <label for="a01" class="lean">LOL</label>
           </span>
 
           <span>
@@ -577,7 +583,7 @@
               value="a02"
               id="q03a02"
             />
-            <label for="a02">SMH</label>
+            <label for="a02" class="lean">SMH</label>
           </span>
         </div>
         <button type="button" class="nav nav--back" value="back">
@@ -610,34 +616,38 @@
           <div>8-Step</div>
           <div>Authentication Process</div>
         </h3>
-        <p>
+        <p class="truth">
           <div class="question-truth">
             Step 5b: LOL or SMH
           </div>
-          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+          
+          <div id="tiktok">
+            <div id="tiktokPlayer"></div>
+          </div>
+
         </p>
         <div class="radio-answer-center">
           <!-- spans for horizontal -->
           <span>
             <input
-              class="round-btn"
+              class="round-btn tiktokvid"
               type="radio"
               name="q03"
               value="a01"
               id="q03a01"
             />
-            <label for="a01">LOL</label>
+            <label for="a01" class="lean">LOL</label>
           </span>
 
           <span>
             <input
-              class="round-btn"
+              class="round-btn tiktokvid"
               type="radio"
               name="q03"
               value="a02"
               id="q03a02"
             />
-            <label for="a02">SMH</label>
+            <label for="a02" class="lean">SMH</label>
           </span>
         </div>
         <button type="button" class="nav nav--back" value="back">
@@ -674,7 +684,7 @@
           <div class="question-truth">
             Step 5c: LOL or SMH
           </div>
-          <img class="step5a-img" src="assets/camo.png" alt="camo pic" />
+          <img class="step5a-img" src="assets/post-bret-lehne.png" alt="camo pic" />
         </p>
         <div class="radio-answer-center">
           <!-- spans for horizontal -->
@@ -686,7 +696,7 @@
               value="a01"
               id="q03a01"
             />
-            <label for="a01">LOL</label>
+            <label for="a01" class="lean">LOL</label>
           </span>
 
           <span>
@@ -697,7 +707,7 @@
               value="a02"
               id="q03a02"
             />
-            <label for="a02">SMH</label>
+            <label for="a02" class="lean">SMH</label>
           </span>
         </div>
         <button type="button" class="nav nav--back" value="back">
@@ -1130,5 +1140,6 @@
     </fieldset> -->
 
     <script src="index.js"></script>
+    <script src="http://www.youtube.com/player_api"></script>
   </body>
 </html>

@@ -128,7 +128,7 @@ input[type='radio']:checked::before {
 }
 
 .step5a-img {
-  width: 80%;
+  width: 100%;
 }
 
 /* for opening page */
@@ -138,7 +138,7 @@ input[type='radio']:checked::before {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100vw;
   max-width: 750px;
   max-height: 750px;
   margin: 0 auto;
@@ -147,6 +147,10 @@ input[type='radio']:checked::before {
 
 #start {
   box-shadow: white;
+}
+
+.seal-container {
+  position: relative;
 }
 
 .logo-1 {
@@ -329,6 +333,34 @@ input[type='radio']:checked::before {
   margin-bottom: 1.5rem;
 }
 
+#youtube {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+#tiktok {
+  display: flex;
+  justify-content: center;
+}
+
+#tiktok #tiktok-player {
+  height: 100px;
+  width: 10px;
+}
+
+.hideVid {
+  display: none;
+}
+
+.showVid {
+  display: flex;
+}
+
 .ever {
   display: flex;
   flex-direction: column;
@@ -376,7 +408,7 @@ input[type='radio']:checked::before {
   color: white;
   background-color: black;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
   font-size: 0.6rem;
   padding: 6px 10px;
@@ -400,13 +432,20 @@ input[type='radio']:checked::before {
 }
 
 .radio-answer-center {
-  padding-bottom: 35%;
+  padding-bottom: 20%;
   text-align: center;
 }
 
 .radio-answer-center span {
   display: inline-block;
   margin: 0 3%;
+  font-size: 0.8rem;
+  /* font-weight: 700; */
+}
+
+.embed {
+  margin: 0 auto;
+  width: 50%;
 }
 
 .radio-answer-column-step-1 {
