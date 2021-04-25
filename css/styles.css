@@ -316,21 +316,16 @@ input[type='radio']:checked::before {
 #youtube {
   position: absolute;
   top: 35%;
-  width: 100%;
-  height: 80%;
+  width: 90%;
   overflow: hidden;
-  /* display: flex; */
-  /* justify-content: center; */
 }
 
 #tiktok {
   display: flex;
   justify-content: center;
-}
-
-#tiktok #tiktok-player {
-  height: 100px;
-  width: 10px;
+  width: 28.5%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .hideVid {

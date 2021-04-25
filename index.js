@@ -480,7 +480,7 @@ function onTikTokPlayerStateChange(e) {
 }
 
 function onYouTubePlayerAPIReady() {
-  const tiktokVidWidth = vw * 0.3;
+  const tiktokVidWidth = vw * 0.4;
   const tiktokVidHeight = tiktokVidWidth / 0.61;
 
   const vidList = [
