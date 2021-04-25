@@ -70,21 +70,21 @@ for (let i = 0; i < jayne7.length; i++) {
 let jayne7Audio;
 
 // get the radio buttons so you can play the video & container that holds vid
-// const mayoBtns = document.getElementsByClassName('mayovid');
-// const mayoBucket = document.getElementById('youtube');
+const mayoBtns = document.getElementsByClassName('mayovid');
+const mayoBucket = document.getElementById('youtube');
 
-// for (let i = 0; i < mayoBtns.length; i++) {
-//   mayoBtns[i].addEventListener('click', startVid);
-// }
+for (let i = 0; i < mayoBtns.length; i++) {
+  mayoBtns[i].addEventListener('click', startVid);
+}
 
-// // get the radio buttons so you can stop the tik tok video
-// const tiktokBtns = document.getElementsByClassName('tiktokvid');
-// console.log(tiktokBtns);
-// const tiktokBucket = document.getElementById('youtube');
+// get the radio buttons so you can stop the tik tok video
+const tiktokBtns = document.getElementsByClassName('tiktokvid');
+console.log(tiktokBtns);
+const tiktokBucket = document.getElementById('youtube');
 
-// for (let i = 0; i < tiktokBtns.length; i++) {
-//   tiktokBtns[i].addEventListener('click', stopVid);
-// }
+for (let i = 0; i < tiktokBtns.length; i++) {
+  tiktokBtns[i].addEventListener('click', stopVid);
+}
 
 function handleOthers(e) {
   console.log('in handleOthers');
@@ -430,95 +430,102 @@ function playAudio(e) {
 //   });
 // }
 
-/* <div>
-    <input type="radio" id="contactChoice1"
-     name="contact" value="email">
-    <label for="contactChoice1">Email</label>
+// ****************************** VIDEO STUFF *************************
+// make embedded mayo video play then hide
+var mayoPlayer;
+let once = false;
 
-    <input type="radio" id="contactChoice2"
-     name="contact" value="phone">
-    <label for="contactChoice2">Phone</label>
+// play mayoVideo on radio button change
+function startVid() {
+  if (once) {
+    return;
+  }
+  mayoBucket.classList.remove('hideVid');
+  mayoBucket.classList.add('showVid');
 
-    <input type="radio" id="contactChoice3"
-     name="contact" value="mail">
-    <label for="contactChoice3">Mail</label>
-  </div>
-  <div>
-    <button type="submit">Submit</button>
-  </div> */
+  mayoPlayer.playVideo();
+}
 
-// make embedded youtube video play then hide for mayo video
-// var mayoPlayer;
-// let once = false;
+// when mayo video ends
+function onMayoStateChange(e) {
+  if (e.data === 0) {
+    mayoBucket.classList.add('hideVid');
+    mayoBucket.classList.remove('showVid');
+    once = true;
+  }
+}
 
-// function onYouTubePlayerAPIReady() {
-//   mayoPlayer = new YT.Player('mayoPlayer', {
-//     videoId: '3kDlFdUrOtk',
-//     events: {
-//       onStateChange: onPlayerStateChange,
-//     },
-//   });
-// }
+// // make embedded tiktok video play & loop & hide
+var tiktokPlayer;
+const vw = Math.max(
+  document.documentElement.clientWidth || 0,
+  window.innerWidth || 0
+);
+const vh = Math.max(
+  document.documentElement.clientHeight || 0,
+  window.innerHeight || 0
+);
 
-// // play mayoVideo on radio button change
-// function startVid() {
-//   if (once) {
-//     return;
-//   }
-//   mayoBucket.classList.remove('hideVid');
-//   mayoBucket.classList.add('showVid');
+// stop tiktok video on radio button change
+function stopVid() {
+  console.log('in stop vid');
+  tiktokPlayer.stopVideo();
+}
 
-//   // console.log(mayoPlayer);
-//   mayoPlayer.playVideo();
-// }
+// when tiktok video ends LOOP IT!
+function onTikTokPlayerStateChange(e) {
+  if (e.data === 0) {
+    tiktokPlayer.playVideo();
+  }
+}
 
-// // when mayo video ends
-// function onPlayerStateChange(e) {
-//   if (e.data === 0) {
-//     mayoBucket.classList.add('hideVid');
-//     mayoBucket.classList.remove('showVid');
-//     once = true;
-//   }
-// }
+function onYouTubePlayerAPIReady() {
+  const tiktokVidWidth = vw * 0.3;
+  const tiktokVidHeight = tiktokVidWidth / 0.61;
 
-// // make embedded youtube video play & loop hide for tiktok video
-// var tiktokPlayer;
-// const vw = Math.max(
-//   document.documentElement.clientWidth || 0,
-//   window.innerWidth || 0
-// );
-// const vh = Math.max(
-//   document.documentElement.clientHeight || 0,
-//   window.innerHeight || 0
-// );
+  const vidList = [
+    {
+      id: 'mayoPlayer',
+      height: '390',
+      width: '640',
+      events: { onStateChange: onMayoStateChange },
+      videoId: '3kDlFdUrOtk',
+    },
+    {
+      id: 'tiktokPlayer',
+      height: tiktokVidWidth,
+      width: tiktokVidHeight,
+      modestbranding: 1,
+      events: { onStateChange: onTikTokPlayerStateChange },
+      videoId: 'J9uIhKmzQvY',
+    },
+  ];
+  console.log('in IframeAPIReady');
+  // if (typeof vidList === 'undefined') return;
 
-// const vidWidth = vw * 0.3;
-// const vidHeight = vidWidth / 0.61;
+  for (var i = 0; i < vidList.length; i++) {
+    var currPlayer = createPlayer(vidList[i]);
+  }
+}
 
-// console.log(vidWidth, vidHeight, 'wid ht');
+function createPlayer(playerInfo) {
+  if (playerInfo.id === 'mayoPlayer') {
+    mayoPlayer = new YT.Player(playerInfo.id, {
+      height: playerInfo.height,
+      width: playerInfo.width,
+      videoId: playerInfo.videoId,
+      events: playerInfo.events,
+    });
 
-// function onYouTubePlayerAPIReady() {
-//   tiktokPlayer = new YT.Player('tiktokPlayer', {
-//     videoId: 'J9uIhKmzQvY',
-//     height: vidHeight,
-//     width: vidWidth,
-//     events: {
-//       onStateChange: onTikTokPlayerStateChange,
-//     },
-//   });
-// }
+    return mayoPlayer;
+  } else {
+    tiktokPlayer = new YT.Player(playerInfo.id, {
+      height: playerInfo.height,
+      width: playerInfo.width,
+      videoId: playerInfo.videoId,
+      events: playerInfo.events,
+    });
+  }
 
-// // stop tiktok video on radio button change
-// function stopVid() {
-//   console.log('in stop vid');
-//   tiktokPlayer.stopVideo();
-// }
-
-// // when tiktok video ends
-// function onTikTokPlayerStateChange(e) {
-//   if (e.data === 0) {
-//     tiktokPlayer.playVideo();
-//   }
-// }
-
-// https://www.youtube.com/watch?v=J9uIhKmzQvY
+  return tiktokPlayer;
+}
