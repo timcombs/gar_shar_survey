@@ -574,7 +574,7 @@ input[type='radio']:checked::before {
   text-align: right;
   margin-top: 20%;
   opacity: 0;
-  animation: show-author 1000ms 16s forwards;
+  animation: show-author 2s 14s forwards;
 }
 
 .rebellion-fade-1 {
@@ -629,7 +629,7 @@ input[type='radio']:checked::before {
 
 .rebellion-sentence-proceed {
   opacity: 0;
-  animation: rebellion-fade-in 1s 18s forwards;
+  animation: rebellion-fade-in 1s 17s forwards;
   box-shadow: 3px 2px 2px var(--red);
 }
 
@@ -669,9 +669,13 @@ input[type='radio']:checked::before {
   color: white;
 }
 
+#thanks {
+  padding-top: 15px;
+}
+
 .woc {
   color: yellow;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .hide {

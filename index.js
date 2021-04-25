@@ -79,7 +79,6 @@ for (let i = 0; i < mayoBtns.length; i++) {
 
 // get the radio buttons so you can stop the tik tok video
 const tiktokBtns = document.getElementsByClassName('tiktokvid');
-console.log(tiktokBtns);
 const tiktokBucket = document.getElementById('youtube');
 
 for (let i = 0; i < tiktokBtns.length; i++) {
@@ -87,14 +86,17 @@ for (let i = 0; i < tiktokBtns.length; i++) {
 }
 
 function handleOthers(e) {
-  console.log('in handleOthers');
   let textbox = document.getElementById('step_3_textarea');
 
   if (e.target.id === 'step_3_other') {
     textbox.value = '';
     textbox.disabled = false;
     textbox.setAttribute('placeholder', 'Explain Yourself!');
-  } else {
+  } else if (
+    e.target.id === 'step_3_yesmayo' ||
+    e.target.id === 'step_3_yesnotmayo' ||
+    e.target.id === 'step_3_nomay'
+  ) {
     textbox.disabled = true;
     textbox.removeAttribute('placeholder');
     textbox.value = 'n/a';
@@ -113,14 +115,15 @@ for (let lolView = 0; lolView < lolViews.length; lolView++) {
   lolViews[lolView].addEventListener('click', handleNavigation);
 }
 
+// grab the element that needs the first and last name on the last view
+const thanks = document.getElementById('thanks');
+
 // ********************** NAVIGATION *******************
 // proceed buttons & lol/smh buttons have a value that
 // corresponds to specific functionality for each view
 function handleNavigation(e) {
-  // add values to object
-
   let btnClicked = e.currentTarget;
-  e.preventDefault();
+  e.preventDefault(); // i don't think i need this.
 
   function hideThe(node) {
     node.classList.add('hide');
@@ -138,39 +141,56 @@ function handleNavigation(e) {
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceed');
   } else if (btnClicked.value === 'proceedMultTextAnswer') {
+    const answerObj = {
+      first: '',
+      middle: '',
+      last: '',
+    };
+
+    const answerArr = Object.keys(answerObj);
+
     let current = btnClicked.parentElement.parentElement;
     let name = btnClicked.parentElement.name;
 
     const questions = document.getElementsByName(name);
 
+    // make sure questions are answered then push into answerObj
     for (let i = 1; i < questions.length; i++) {
       if (questions[i].value === '') {
         return;
+      } else {
+        answerObj[answerArr[i - 1]] = questions[i].value;
       }
     }
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedMultTextAnswer');
   } else if (btnClicked.value === 'proceedSingleAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let question = btnClicked.parentElement.name;
     let answer = document.querySelector(`input[name="${question}"]:checked`);
 
+    const answerObj = {};
+
     // if no answer, no proceeding to next view
     if (answer.value === '') {
       return;
+    } else {
+      answerObj[question] = answer.value;
     }
+
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedSingleAnswer');
   } else if (btnClicked.value === 'back') {
     let current = btnClicked.parentElement.parentElement;
     hideThe(current);
@@ -189,43 +209,62 @@ function handleNavigation(e) {
     let question = btnClicked.name;
     let answer = document.querySelector(`input[name="${question}"]:checked`);
 
+    const answerObj = {};
+
     if (answer.value === '') {
       return;
+    } else {
+      answerObj[question] = answer.value;
     }
+
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedLOLAnswer');
   } else if (btnClicked.value === 'proceedOtherAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let question = btnClicked.parentElement.name;
     let answer = document.querySelector(`input[name="${question}"]:checked`);
 
+    const answerObj = {};
+
     if (current.firstElementChild.nextElementSibling.name === 'step_3') {
+      let textbox = document.getElementById('step_3_textarea');
       for (let i = 0; i < others.length; i++) {
         if (answer.value === '' || others[i].value === '') {
           return;
+        } else {
+          answerObj.step_3 = answer.value;
+          answerObj.step_3_text = textbox.value;
         }
       }
     } else {
-      console.log('noOthers', noOthers);
+      let textbox = document.getElementById('step_4_textarea');
       for (let i = 0; i < noOthers.length; i++) {
         if (answer.value === '' || noOthers[i].value === '') {
           return;
+        } else {
+          answerObj.step_4 = answer.value;
+          answerObj.step_4_text = textbox.value;
         }
       }
     }
+
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedOtherAnswer');
   } else if (btnClicked.value === 'proceedMultAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let name = btnClicked.parentElement.name;
+
+    let answerObj = {};
 
     for (let i = 0; i < 4; i++) {
       let letter;
@@ -256,8 +295,13 @@ function handleNavigation(e) {
       // check each radio button pair, if not checked then return
       if (answer.value === '') {
         return;
+      } else {
+        answerObj[`${name}${letter}`] = answer.value;
       }
     }
+
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
 
     // turn off the audio
     name === 'step_6' ? jayne6Audio.pause() : jayne7Audio.pause();
@@ -266,17 +310,26 @@ function handleNavigation(e) {
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedMultAnswer');
   } else if (btnClicked.value === 'proceedSingleTextAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let question = btnClicked.parentElement.name;
     let answer = document.getElementById('step_8_textarea');
 
+    let answerObj = {};
+
     if (answer.value === '') {
       return;
+    } else {
+      answerObj.step_8_text = answer.value;
     }
 
+    // update surveyAnswers obj
+    updateSurveyAnswers(answerObj);
+
     hideThe(current);
+
+    // adds first and last name to thank you on the next page
+    thanks.innerText = `Thank you ${surveyAnswers.first} / ${surveyAnswers.last}`;
 
     let next = current.nextElementSibling;
     showThe(next);
@@ -285,33 +338,20 @@ function handleNavigation(e) {
     const audioElement = new Audio('assets/out-of-cntrl.mp3');
     audioElement.loop = true;
     audioElement.play();
-    console.log('proceedSingleTextAnswer');
+
+    // handleFormSubmit(surveyAnswers);
   } else {
     console.log('error!');
   }
 }
 
-// TODO: refactor this to add questions to surveyAnswers object
-// plan is to update when navigation button pushed
-// may need additional code in the conditional
-function updateSurveyAnswers(e) {
-  e.preventDefault();
-  let answer;
-  console.log('target', e.target.parentElement);
+// adds questions to surveyAnswers when non-BACK navigation button pushed
+function updateSurveyAnswers(obj) {
+  const objKeys = Object.keys(obj);
 
-  const picked = `input[name = "${e.target.parentElement.name}"]`;
-
-  const possible = document.querySelectorAll(picked);
-  console.log('target', possible);
-
-  for (let one of possible) {
-    if (one.checked) {
-      answer = one.nextSibling.innerText[0];
-    }
+  for (let i = 0; i < objKeys.length; i++) {
+    surveyAnswers[objKeys[i]] = obj[objKeys[i]];
   }
-
-  surveyAnswers[e.target.parentElement.name] = answer;
-  console.log(surveyAnswers, 'answers');
 }
 
 function toggleFakes(fakes) {
@@ -330,7 +370,7 @@ function toggleFakes(fakes) {
   }
 }
 
-// randomized
+// randomized version
 // function toggleFakes(fakes) {
 //   for (let i = 0; i < fakes.length; i++) {
 //     if (
@@ -416,19 +456,22 @@ function playAudio(e) {
   }
 }
 
-// function handleFormSubmit(e) {
-//   e.preventDefault();
+// TODO: make this function sumbits data to google spreadsheet
+// solution uses sheet.best - form has to be a formData object
+function handleFormSubmit(obj) {
+  const form = new FormData();
 
-//   const form = JSON.stringify
+  for (var key in obj) {
+    form.append(key, obj[key]);
+  }
 
-//   fetch(
-//       'https://sheet.best/api/sheets/d48f685c-1e18-4a21-8193-1732e82292f8',
-//       { method: 'POST', body: form }
-//     )
-//       .then((response) => console.log('Success!', response))
-//       .catch((error) => console.error('Error!', error));
-//   });
-// }
+  fetch('https://sheet.best/api/sheets/d48f685c-1e18-4a21-8193-1732e82292f8', {
+    method: 'POST',
+    body: form,
+  })
+    .then((response) => console.log('Success!', response))
+    .catch((error) => console.error('Error!', error));
+}
 
 // ****************************** VIDEO STUFF *************************
 // make embedded mayo video play then hide
@@ -455,7 +498,7 @@ function onMayoStateChange(e) {
   }
 }
 
-// // make embedded tiktok video play & loop & hide
+// make embedded tiktok video play & loop & hide
 var tiktokPlayer;
 const vw = Math.max(
   document.documentElement.clientWidth || 0,
@@ -468,7 +511,6 @@ const vh = Math.max(
 
 // stop tiktok video on radio button change
 function stopVid() {
-  console.log('in stop vid');
   tiktokPlayer.stopVideo();
 }
 
@@ -500,8 +542,6 @@ function onYouTubePlayerAPIReady() {
       videoId: 'J9uIhKmzQvY',
     },
   ];
-  console.log('in IframeAPIReady');
-  // if (typeof vidList === 'undefined') return;
 
   for (var i = 0; i < vidList.length; i++) {
     var currPlayer = createPlayer(vidList[i]);
