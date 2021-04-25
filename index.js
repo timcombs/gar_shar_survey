@@ -24,16 +24,28 @@ const surveyAnswers = {
   step_8_text: '',
 };
 
-// first textarea - activate textbox if other radio button is clicked
+// grab elements that say FAKE
+const fakes = document.getElementsByClassName('fake');
+// this toggles the words in the bipocHeading
+setInterval(function () {
+  toggleFakes(fakes);
+}, 1250);
+
+// first textarea are the userinfo textareas
+// second textarea - activate textbox if other radio button is clicked
 const others = document.getElementsByClassName('step_3');
 for (let i = 0; i < others.length; i++) {
   others[i].addEventListener('change', handleOthers);
 }
 
-// second textarea - activate textbox if other radio button is clicked
+// third textarea - activate textbox if other radio button is clicked
 const noOthers = document.getElementsByClassName('step_4');
-let secondTextbox = document.getElementById('step_4_textarea');
-secondTextbox.value = ''; // to make sure textarea is empty
+let thirdTextbox = document.getElementById('step_4_textarea');
+thirdTextbox.value = ''; // to make sure textarea is empty
+
+// fourth textarea
+let fourthTextbox = document.getElementById('step_8_textarea');
+fourthTextbox.value = ''; // to make sure textarea is empty
 
 // grab the heading for the bipocnithity text to toggle it
 const bipocHeading = document.getElementById('bipoc-heading');
@@ -42,6 +54,20 @@ const bipocHeading = document.getElementById('bipoc-heading');
 setInterval(function () {
   toggleWords(bipocHeading);
 }, 1500);
+
+// first Jayne Cortez audio - for step6
+const jayne6 = document.getElementsByClassName('jayne6');
+for (let i = 0; i < jayne6.length; i++) {
+  jayne6[i].addEventListener('click', playAudio);
+}
+let jayne6Audio;
+
+// first Jayne Cortez audio - for step6
+const jayne7 = document.getElementsByClassName('jayne7');
+for (let i = 0; i < jayne7.length; i++) {
+  jayne7[i].addEventListener('click', playAudio);
+}
+let jayne7Audio;
 
 // get the radio buttons so you can play the video & container that holds vid
 // const mayoBtns = document.getElementsByClassName('mayovid');
@@ -75,9 +101,6 @@ function handleOthers(e) {
   }
 }
 
-// ------------handle the navigation buttons - every page
-// ------------maybe make this into a switch statement later?
-
 // grab all the back/proceed/submit buttons & add event listener
 const views = document.getElementsByClassName('nav');
 for (let view = 0; view < views.length; view++) {
@@ -90,7 +113,6 @@ for (let lolView = 0; lolView < lolViews.length; lolView++) {
   lolViews[lolView].addEventListener('click', handleNavigation);
 }
 
-// TODO: HOWTO handle updating the object with the answers?
 // ********************** NAVIGATION *******************
 // proceed buttons & lol/smh buttons have a value that
 // corresponds to specific functionality for each view
@@ -117,27 +139,53 @@ function handleNavigation(e) {
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceed');
+  } else if (btnClicked.value === 'proceedMultTextAnswer') {
+    let current = btnClicked.parentElement.parentElement;
+    let name = btnClicked.parentElement.name;
+
+    const questions = document.getElementsByName(name);
+
+    for (let i = 1; i < questions.length; i++) {
+      if (questions[i].value === '') {
+        return;
+      }
+    }
+
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
+    console.log('proceedMultTextAnswer');
   } else if (btnClicked.value === 'proceedSingleAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let question = btnClicked.parentElement.name;
-    let answer = document.querySelector(`input[name="${question}"]:checked`)
-      .value;
+    let answer = document.querySelector(`input[name="${question}"]:checked`);
 
     // if no answer, no proceeding to next view
-    // if (answer === '') {
-    //   return;
-    // }
+    if (answer.value === '') {
+      return;
+    }
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceedSingleAnswer');
+  } else if (btnClicked.value === 'back') {
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
+
+    let previous = current.previousElementSibling;
+    showThe(previous);
+  } else if (btnClicked.value === 'bipoc') {
+    let current = btnClicked.parentElement.parentElement;
+    hideThe(current);
+
+    let next = current.nextElementSibling;
+    showThe(next);
   } else if (btnClicked.value === 'lol' || btnClicked.value === 'smh') {
-    console.log('in the lol answer');
     let current =
       btnClicked.parentElement.parentElement.parentElement.parentElement;
-    console.log(current);
     let question = btnClicked.name;
     let answer = document.querySelector(`input[name="${question}"]:checked`);
 
@@ -149,7 +197,7 @@ function handleNavigation(e) {
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedSingleAnswer');
+    console.log('proceedLOLAnswer');
   } else if (btnClicked.value === 'proceedOtherAnswer') {
     let current = btnClicked.parentElement.parentElement;
     let question = btnClicked.parentElement.name;
@@ -179,71 +227,74 @@ function handleNavigation(e) {
     let current = btnClicked.parentElement.parentElement;
     let name = btnClicked.parentElement.name;
 
-    const questions = document.getElementsByName(name);
+    for (let i = 0; i < 4; i++) {
+      let letter;
 
-    for (let i = 1; i < questions.length; i++) {
-      // if (questions[i].value === '') {
-      //   return;
-      // }
+      // getting the letter for each radio button group
+      // (each question a, b, c, d) to be able to check that each was answered
+      switch (i) {
+        case 0:
+          letter = 'a';
+          break;
+        case 1:
+          letter = 'b';
+          break;
+        case 2:
+          letter = 'c';
+          break;
+        case 3:
+          letter = 'd';
+          break;
+        default:
+          console.log('uhhhhhh you broke something');
+      }
+
+      let answer = document.querySelector(
+        `input[name="${name}${letter}"]:checked`
+      );
+
+      // check each radio button pair, if not checked then return
+      if (answer.value === '') {
+        return;
+      }
     }
+
+    // turn off the audio
+    name === 'step_6' ? jayne6Audio.pause() : jayne7Audio.pause();
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
     console.log('proceedMultAnswer');
-  } else if (btnClicked.value === 'proceedMultTextAnswer') {
+  } else if (btnClicked.value === 'proceedSingleTextAnswer') {
     let current = btnClicked.parentElement.parentElement;
-    let name = btnClicked.parentElement.name;
+    let question = btnClicked.parentElement.name;
+    let answer = document.getElementById('step_8_textarea');
 
-    const questions = document.getElementsByName(name);
-
-    for (let i = 1; i < questions.length; i++) {
-      // if (questions[i].value === '') {
-      //   return;
-      // }
+    if (answer.value === '') {
+      return;
     }
 
     hideThe(current);
 
     let next = current.nextElementSibling;
     showThe(next);
-    console.log('proceedMultTextAnswer');
-  } else if (btnClicked.value === 'back') {
-    let current = btnClicked.parentElement.parentElement;
-    hideThe(current);
 
-    let previous = current.previousElementSibling;
-    showThe(previous);
-  } else if (btnClicked.value === 'bipoc') {
-    let current = btnClicked.parentElement.parentElement;
-    hideThe(current);
-
-    let next = current.nextElementSibling;
-    showThe(next);
-  } else if (btnClicked.value === 'end') {
-    let current = btnClicked.parentElement.parentElement;
-    hideThe(current);
-
-    let next = current.nextElementSibling;
-    showThe(next);
-
-    // start playing audio
+    // start playing audio for last view
     const audioElement = new Audio('assets/out-of-cntrl.mp3');
     audioElement.loop = true;
     audioElement.play();
+    console.log('proceedSingleTextAnswer');
   } else {
     console.log('error!');
   }
 }
 
-// // get demographic button
-// const demoBtn = document.getElementById('demographics');
-// demoBtn.addEventListener('click', handleDemographicSubmit);
-
-// button.addEventListener('click', handleAnswerSubmit);
-
-function handleAnswerSubmit(e) {
+// TODO: refactor this to add questions to surveyAnswers object
+// plan is to update when navigation button pushed
+// may need additional code in the conditional
+function updateSurveyAnswers(e) {
   e.preventDefault();
   let answer;
   console.log('target', e.target.parentElement);
@@ -262,6 +313,38 @@ function handleAnswerSubmit(e) {
   surveyAnswers[e.target.parentElement.name] = answer;
   console.log(surveyAnswers, 'answers');
 }
+
+function toggleFakes(fakes) {
+  for (let i = 0; i < fakes.length; i++) {
+    if (fakes[i].classList.contains('spice')) {
+      fakes[i].classList.remove('spice');
+      fakes[i].classList.add('mayo');
+
+      let idx = i + 1;
+      idx > 2 ? (idx = 0) : (idx = idx);
+
+      fakes[idx].classList.add('spice');
+      fakes[idx].classList.remove('mayo');
+      return;
+    }
+  }
+}
+
+// randomized
+// function toggleFakes(fakes) {
+//   for (let i = 0; i < fakes.length; i++) {
+//     if (
+//       fakes[i].classList.contains('spice') &&
+//       Math.floor(Math.random() < 0.5)
+//     ) {
+//       fakes[i].classList.remove('spice');
+//       fakes[i].classList.add('mayo');
+//     } else if (fakes[i].classList.contains('mayo')) {
+//       fakes[i].classList.add('spice');
+//       fakes[i].classList.remove('mayo');
+//     }
+//   }
+// }
 
 function toggleWords(bipocHeading) {
   if (
@@ -310,6 +393,26 @@ function toggleWords(bipocHeading) {
     bipocHeading.lastElementChild.lastElementChild.previousElementSibling.previousElementSibling.classList.remove(
       'words'
     );
+  }
+}
+
+function playAudio(e) {
+  const vidId = e.target.classList[1];
+
+  if (vidId === 'jayne6') {
+    if (jayne6Audio) {
+      return;
+    }
+    jayne6Audio = new Audio(`assets/${vidId}.mp3`);
+    jayne6Audio.loop = true;
+    jayne6Audio.play();
+  } else {
+    if (jayne7Audio) {
+      return;
+    }
+    jayne7Audio = new Audio(`assets/${vidId}.mp3`);
+    jayne7Audio.loop = true;
+    jayne7Audio.play();
   }
 }
 

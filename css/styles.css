@@ -127,18 +127,24 @@ input[type='radio']:checked::before {
   right: 7%;
 }
 
+.nav-splash--proceed {
+  position: absolute;
+  bottom: 13%;
+  right: 7%;
+}
+
 .step5a-img {
   width: 100%;
 }
 
-/* for opening page */
+/* for opening view */
 .splash {
   background-color: var(--blue);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   max-width: 750px;
   max-height: 750px;
   margin: 0 auto;
@@ -150,37 +156,11 @@ input[type='radio']:checked::before {
 }
 
 .seal-container {
-  position: relative;
+  border: 1px solid yellow;
 }
 
-.logo-1 {
-  position: absolute;
+.logo-start {
   width: 55%;
-}
-
-/* .logo-2 {
-  position: absolute;
-  width: 35%;
-  top: 25.75%;
-  left: 32.7%;
-  animation: rotate-seal 6000ms linear infinite;
-} */
-
-.logo-2 {
-  position: absolute;
-  width: 35%;
-  top: 36.4%;
-  left: 32.7%;
-  animation: rotate-seal 6000ms linear infinite;
-}
-
-@keyframes rotate-seal {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 /* -------------------------- for views with headings that say TRUTH */
@@ -206,7 +186,7 @@ input[type='radio']:checked::before {
   color: white;
 }
 
-.logo-3 {
+.logo-banner {
   position: absolute;
   width: 25%;
   top: 25%;
@@ -419,7 +399,7 @@ input[type='radio']:checked::before {
   color: white;
   background-color: black;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  /* font-weight: 400; */
   text-align: center;
   font-size: 0.6rem;
   padding: 6px 10px;
@@ -429,6 +409,7 @@ input[type='radio']:checked::before {
 .personal-truth {
   font-family: 'Libre Caslon Text', serif;
   margin-top: 0;
+  font-weight: 700;
 }
 
 .radio-answer-center {
@@ -481,6 +462,15 @@ input[type='radio']:checked::before {
 
 .spice {
   color: var(--red);
+}
+
+.mayo {
+  color: white;
+}
+
+.fake {
+  font-weight: 700;
+  font-family: 'Libre Caslon Text', serif;
 }
 
 .lean {
@@ -589,7 +579,7 @@ input[type='radio']:checked::before {
   text-align: right;
   margin-top: 20%;
   opacity: 0;
-  animation: show-author 1000ms 24s forwards;
+  animation: show-author 1000ms 16s forwards;
 }
 
 .rebellion-fade-1 {
@@ -598,13 +588,13 @@ input[type='radio']:checked::before {
   display: inline-block;
   width: 75%;
   opacity: 0;
-  animation: slow-show1 10s steps(100, end) 2s forwards;
+  animation: slow-show1 7s steps(100, end) 1s forwards;
 }
 
 .rebellion-fade-2 {
   overflow: hidden;
   white-space: nowrap;
-  animation: slow-show2 10s steps(100, end) 12s forwards;
+  animation: slow-show2 7s steps(100, end) 8s forwards;
   width: 80%;
   opacity: 0;
 }
@@ -644,7 +634,7 @@ input[type='radio']:checked::before {
 
 .rebellion-sentence-proceed {
   opacity: 0;
-  animation: rebellion-fade-in 1s 28s forwards;
+  animation: rebellion-fade-in 1s 18s forwards;
   box-shadow: 3px 2px 2px var(--red);
 }
 
@@ -655,6 +645,38 @@ input[type='radio']:checked::before {
   100% {
     opacity: 1;
   }
+}
+
+/* for closing view */
+.end {
+  background-color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 750px;
+  max-height: 750px;
+}
+
+.logo-end {
+  width: 75%;
+}
+
+.end-text {
+  width: 90%;
+  text-align: center;
+}
+
+.thanks {
+  font-size: 0.45rem;
+  color: white;
+}
+
+.woc {
+  color: yellow;
+  font-size: 0.8rem;
 }
 
 .hide {
