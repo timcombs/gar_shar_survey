@@ -6,6 +6,7 @@
 html {
   box-sizing: border-box;
   font-family: 'Libre Caslon Text', serif;
+  font-size: 16px;
 }
 
 body {
@@ -228,12 +229,12 @@ input[type='radio']:checked::before {
 }
 
 .truth form {
-  margin-top: 20%;
+  margin-top: 15%;
   border: 2px solid var(--blue);
   outline: 1px solid var(--blue);
   outline-offset: 3px;
   width: 80%;
-  height: 60%;
+  height: 19.42rem;
   padding: 10px;
   padding-top: 0;
   position: relative;
@@ -352,12 +353,12 @@ input[type='radio']:checked::before {
 }
 
 .personal-truth-info {
-  margin-top: 20%;
+  margin-top: 11%;
   border: unset;
   border: 1px solid var(--red);
   outline: unset;
   width: 80%;
-  height: 60%;
+  height: 24.7rem;
   padding: 10px;
   padding-top: 0;
   position: relative;
@@ -692,4 +693,10 @@ input[type='radio']:checked::before {
 
 .words-gone {
   display: none;
+}
+
+@media screen and (min-width: 500px) {
+}
+
+@media screen and (min-width: 750px) {
 }
