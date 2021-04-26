@@ -370,22 +370,6 @@ function toggleFakes(fakes) {
   }
 }
 
-// randomized version
-// function toggleFakes(fakes) {
-//   for (let i = 0; i < fakes.length; i++) {
-//     if (
-//       fakes[i].classList.contains('spice') &&
-//       Math.floor(Math.random() < 0.5)
-//     ) {
-//       fakes[i].classList.remove('spice');
-//       fakes[i].classList.add('mayo');
-//     } else if (fakes[i].classList.contains('mayo')) {
-//       fakes[i].classList.add('spice');
-//       fakes[i].classList.remove('mayo');
-//     }
-//   }
-// }
-
 function toggleWords(bipocHeading) {
   if (
     bipocHeading.lastElementChild.firstElementChild.classList[0] === 'words'
@@ -456,7 +440,7 @@ function playAudio(e) {
   }
 }
 
-// TODO: make this function sumbits data to google spreadsheet
+// This function sumbits data to google spreadsheet
 // solution uses sheet.best - form has to be a formData object
 function handleFormSubmit(obj) {
   const form = new FormData();
@@ -500,14 +484,6 @@ function onMayoStateChange(e) {
 
 // make embedded tiktok video play & loop & hide
 var tiktokPlayer;
-const vw = Math.max(
-  document.documentElement.clientWidth || 0,
-  window.innerWidth || 0
-);
-const vh = Math.max(
-  document.documentElement.clientHeight || 0,
-  window.innerHeight || 0
-);
 
 // stop tiktok video on radio button change
 function stopVid() {
@@ -522,21 +498,18 @@ function onTikTokPlayerStateChange(e) {
 }
 
 function onYouTubePlayerAPIReady() {
-  const tiktokVidWidth = vw * 0.4;
-  const tiktokVidHeight = tiktokVidWidth / 0.61;
-
   const vidList = [
     {
       id: 'mayoPlayer',
-      height: '390',
-      width: '640',
+      height: 390,
+      width: 640,
       events: { onStateChange: onMayoStateChange },
       videoId: '3kDlFdUrOtk',
     },
     {
       id: 'tiktokPlayer',
-      height: tiktokVidWidth,
-      width: tiktokVidHeight,
+      height: 200,
+      width: 102,
       modestbranding: 1,
       events: { onStateChange: onTikTokPlayerStateChange },
       videoId: 'J9uIhKmzQvY',

@@ -134,8 +134,20 @@ input[type='radio']:checked::before {
   right: 7%;
 }
 
-.step5a-img {
+.step5-img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.step5-cont {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: -14%;
+}
+
+.lol-center {
+  margin-top: -5%;
 }
 
 /* for opening view */
@@ -168,14 +180,9 @@ input[type='radio']:checked::before {
 .truth {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* width: 100vw;
-  height: 100vw;
   max-width: 750px;
   max-height: 750px;
-  min-height: 400px;
-  min-width: 360px; */
   margin: 0 auto;
   position: relative;
 }
@@ -217,7 +224,7 @@ input[type='radio']:checked::before {
 
 .truth-banner-text p:nth-child(1) {
   margin-top: 0;
-  padding-top: 5%;
+  padding-top: 7%;
   margin-bottom: 1%;
   padding-right: 10%;
 }
@@ -225,7 +232,7 @@ input[type='radio']:checked::before {
 .truth-banner-text p:nth-child(2) {
   font-size: 1.5rem;
   margin-top: 1%;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
 }
 
 .truth form {
@@ -316,7 +323,7 @@ input[type='radio']:checked::before {
 
 #youtube {
   position: absolute;
-  top: 35%;
+  top: 25%;
   width: 90%;
   overflow: hidden;
 }
@@ -324,7 +331,8 @@ input[type='radio']:checked::before {
 #tiktok {
   display: flex;
   justify-content: center;
-  width: 28.5%;
+  width: 38.5%;
+  height: 11.1rem;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -340,16 +348,12 @@ input[type='radio']:checked::before {
 .ever {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* width: 100vw;
-  height: 100vw;
   max-width: 750px;
   max-height: 750px;
-  min-height: 400px;
-  min-width: 360px; */
   margin: 0 auto;
   position: relative;
+  background-color: white;
 }
 
 .personal-truth-info {
@@ -480,6 +484,7 @@ input[type='radio']:checked::before {
   font-weight: 400;
   width: 88%;
   margin-top: 16px;
+  text-align: center;
 }
 
 .binary-truth-holder {
@@ -532,6 +537,9 @@ input[type='radio']:checked::before {
   height: 100vh;
   position: relative;
   font-family: 'Libre Caslon Text', serif;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
 }
 
 #bipoc-heading {
@@ -543,7 +551,7 @@ input[type='radio']:checked::before {
 }
 
 .bipoc-text {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   font-style: italic;
   font-weight: 400;
   color: black;
@@ -557,6 +565,10 @@ input[type='radio']:checked::before {
   height: 100vh;
   position: relative;
   font-family: 'Libre Caslon Text', serif;
+  background-color: white;
+  max-width: 750px;
+  max-height: 750px;
+  margin: 0 auto;
 }
 
 .rebellion-text {
@@ -654,10 +666,12 @@ input[type='radio']:checked::before {
   height: 100vh;
   max-width: 750px;
   max-height: 750px;
+  margin: 0 auto;
 }
 
 .logo-end {
   width: 75%;
+  max-width: 25.52rem;
 }
 
 .end-text {
@@ -695,8 +709,145 @@ input[type='radio']:checked::before {
   display: none;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-height: 500px) and (min-width: 459px) {
+  .truth form,
+  .personal-truth-info {
+    width: 22.95rem;
+  }
+
+  .camo-circle {
+    width: 10.33rem;
+    height: 10.33rem;
+  }
+
+  .logo-banner {
+    width: 7.83rem;
+  }
+
+  .rebellion-text {
+    font-size: 1rem;
+  }
+
+  #bipoc-heading {
+    font-size: 1rem;
+  }
+
+  .bipoc-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-height: 700px) and (min-width: 400px) {
+  .nav-splash--proceed {
+    bottom: 25%;
+  }
+
+  .rebellion-text {
+    font-size: 0.75rem;
+  }
+
+  #youtube {
+    top: 31%;
+  }
+
+  #bipoc-heading {
+    font-size: 0.85rem;
+  }
+
+  .bipoc-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-height: 500px) and (min-width: 650px) {
+  .camo-circle {
+    width: 25.25%;
+    height: 25.25vw;
+    top: 11%;
+  }
+
+  .logo-banner {
+    width: 20%;
+  }
+
+  .rebellion-text {
+    font-size: 1.15rem;
+  }
+
+  .thanks {
+    font-size: 0.65rem;
+  }
+
+  #thanks {
+    padding-top: 20px;
+  }
+
+  .woc {
+    font-size: 0.8rem;
+  }
+
+  #youtube {
+    top: 36%;
+  }
+
+  #bipoc-heading {
+    font-size: 1.25rem;
+  }
+
+  .bipoc-text {
+    font-size: 1.35rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
+  body {
+    background-color: rgb(240, 240, 240);
+  }
+
+  .truth,
+  .ever {
+    background-color: white;
+    height: 750px;
+  }
+
+  .truth-banner-text p:nth-child(1) {
+    font-size: 1.5rem;
+  }
+
+  .truth-banner-text p:nth-child(2) {
+    font-size: 2rem;
+  }
+
+  .camo-circle {
+    width: 12.06rem;
+    height: 12.06rem;
+  }
+
+  .rebellion-text {
+    font-size: 1.35rem;
+  }
+
+  .thanks {
+    font-size: 0.85rem;
+  }
+
+  #thanks {
+    padding-top: 25px;
+  }
+
+  .woc {
+    font-size: 1rem;
+  }
+
+  #youtube {
+    top: 34%;
+  }
+
+  #bipoc-heading {
+    font-size: 1.5rem;
+  }
+
+  .bipoc-text {
+    font-size: 1.6rem;
+  }
 }
