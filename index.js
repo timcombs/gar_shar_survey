@@ -449,7 +449,8 @@ function handleFormSubmit(obj) {
     form.append(key, obj[key]);
   }
 
-  fetch('https://sheet.best/api/sheets/d48f685c-1e18-4a21-8193-1732e82292f8', {
+  // now attached to woc google sheet.
+  fetch('https://sheet.best/api/sheets/c30ef0b5-3c9e-47be-a71a-38bd4a79f432', {
     method: 'POST',
     body: form,
   })
@@ -537,6 +538,10 @@ function createPlayer(playerInfo) {
       width: playerInfo.width,
       videoId: playerInfo.videoId,
       events: playerInfo.events,
+      modestbranding: playerInfo.modestbranding,
+      playerVars: {
+        playsinline: 1,
+      },
     });
   }
 
