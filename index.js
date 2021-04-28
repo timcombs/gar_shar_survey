@@ -1,3 +1,6 @@
+// ************************** GLOBAL VARIABLES ******************
+// ************************** GLOBAL VARIABLES ******************
+// ************************** GLOBAL VARIABLES ******************
 // this holds all the data from the survey
 const surveyAnswers = {
   first: '',
@@ -85,6 +88,9 @@ for (let i = 0; i < tiktokBtns.length; i++) {
   tiktokBtns[i].addEventListener('click', stopVid);
 }
 
+// this handles the radio buttons for step 3
+// if other is clicked they must put an answer in the textarea
+// textarea is disabled until other is clicked
 function handleOthers(e) {
   let textbox = document.getElementById('step_3_textarea');
 
@@ -118,9 +124,12 @@ for (let lolView = 0; lolView < lolViews.length; lolView++) {
 // grab the element that needs the first and last name on the last view
 const thanks = document.getElementById('thanks');
 
-// ********************** NAVIGATION *******************
-// proceed buttons & lol/smh buttons have a value that
-// corresponds to specific functionality for each view
+// ************************* NAVIGATION *************************
+// ************************* NAVIGATION *************************
+// ************************* NAVIGATION *************************
+// navigation buttons - Proceed, Go Back, SUBMIT, & lol/smh
+// have value attribute which corresponds to one 'if' of the conditional
+// which corresponds to specific functionality for each view
 function handleNavigation(e) {
   let btnClicked = e.currentTarget;
   e.preventDefault(); // i don't think i need this.
@@ -339,7 +348,7 @@ function handleNavigation(e) {
     audioElement.loop = true;
     audioElement.play();
 
-    // handleFormSubmit(surveyAnswers);
+    handleFormSubmit(surveyAnswers);
   } else {
     console.log('error!');
   }
@@ -440,6 +449,9 @@ function playAudio(e) {
   }
 }
 
+// ********************** GOOGLE SPREADSHEET ****************************
+// ********************** GOOGLE SPREADSHEET ****************************
+// ********************** GOOGLE SPREADSHEET ****************************
 // This function sumbits data to google spreadsheet
 // solution uses sheet.best - form has to be a formData object
 function handleFormSubmit(obj) {
@@ -458,6 +470,8 @@ function handleFormSubmit(obj) {
     .catch((error) => console.error('Error!', error));
 }
 
+// ****************************** VIDEO STUFF *************************
+// ****************************** VIDEO STUFF *************************
 // ****************************** VIDEO STUFF *************************
 // make embedded mayo video play then hide
 var mayoPlayer;
