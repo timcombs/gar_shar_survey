@@ -27,8 +27,12 @@ const surveyAnswers = {
   step_8_text: '',
 };
 
+// get the body tag for background-color purposes
+const body = document.getElementById('body');
+
 // grab elements that say FAKE
 const fakes = document.getElementsByClassName('fake');
+
 // this toggles the words in the bipocHeading
 setInterval(function () {
   toggleFakes(fakes);
@@ -149,6 +153,7 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'proceedMultTextAnswer') {
     const answerObj = {
@@ -178,6 +183,7 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'proceedSingleAnswer') {
     let current = btnClicked.parentElement.parentElement;
@@ -199,18 +205,21 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'back') {
     let current = btnClicked.parentElement.parentElement;
     hideThe(current);
 
     let previous = current.previousElementSibling;
+    changeBkg(previous);
     showThe(previous);
   } else if (btnClicked.value === 'bipoc') {
     let current = btnClicked.parentElement.parentElement;
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'lol' || btnClicked.value === 'smh') {
     let current =
@@ -232,6 +241,7 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'proceedOtherAnswer') {
     let current = btnClicked.parentElement.parentElement;
@@ -268,6 +278,7 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'proceedMultAnswer') {
     let current = btnClicked.parentElement.parentElement;
@@ -318,6 +329,7 @@ function handleNavigation(e) {
     hideThe(current);
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
   } else if (btnClicked.value === 'proceedSingleTextAnswer') {
     let current = btnClicked.parentElement.parentElement;
@@ -341,6 +353,7 @@ function handleNavigation(e) {
     thanks.innerText = `Thank you ${surveyAnswers.first} / ${surveyAnswers.last}`;
 
     let next = current.nextElementSibling;
+    changeBkg(next);
     showThe(next);
 
     // start playing audio for last view
@@ -351,6 +364,26 @@ function handleNavigation(e) {
     handleFormSubmit(surveyAnswers);
   } else {
     console.log('error!');
+  }
+}
+
+// changes background color accordingly based on view
+function changeBkg(viewElement) {
+  if (viewElement.classList.contains('bipocnithity')) {
+    body.style.backgroundColor = '#f71111';
+  }
+
+  if (viewElement.classList.contains('rebellion')) {
+    body.style.backgroundColor = 'white';
+  }
+  if (
+    viewElement.classList.contains('truth') ||
+    viewElement.classList.contains('splash') ||
+    viewElement.classList.contains('userinfo') ||
+    viewElement.classList.contains('end') ||
+    viewElement.classList.contains('ever')
+  ) {
+    body.style.backgroundColor = '#1a2f59';
   }
 }
 
