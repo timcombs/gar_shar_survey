@@ -130,12 +130,16 @@ input[type='radio']:checked::before {
 
 .nav-splash--proceed {
   position: absolute;
-  bottom: 13%;
+  bottom: 28%;
   right: 7%;
 }
 
 .step5-img {
   width: 80%;
+  margin: 0 auto;
+}
+.step5-img--bret {
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -181,10 +185,12 @@ input[type='radio']:checked::before {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   max-width: 750px;
   max-height: 750px;
   margin: 0 auto;
   position: relative;
+  background-color: white;
 }
 
 .truth-banner {
@@ -738,6 +744,10 @@ input[type='radio']:checked::before {
 }
 
 @media screen and (min-height: 700px) and (min-width: 400px) {
+  .truth {
+    max-height: 100vh;
+  }
+
   .nav-splash--proceed {
     bottom: 25%;
   }
@@ -747,7 +757,7 @@ input[type='radio']:checked::before {
   }
 
   #youtube {
-    top: 31%;
+    top: 21%;
   }
 
   #bipoc-heading {

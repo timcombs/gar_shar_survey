@@ -585,9 +585,10 @@ function createPlayer(playerInfo) {
       width: playerInfo.width,
       videoId: playerInfo.videoId,
       events: playerInfo.events,
-      modestbranding: playerInfo.modestbranding,
       playerVars: {
         playsinline: 1,
+        cc_load_policy: 1,
+        modestbranding: 1,
       },
     });
   }
