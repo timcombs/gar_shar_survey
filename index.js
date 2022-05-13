@@ -2,6 +2,7 @@
 // ************************** GLOBAL VARIABLES ******************
 // ************************** GLOBAL VARIABLES ******************
 // this holds all the data from the survey
+// the values will be sent to the spreadsheet via sheet.best
 const surveyAnswers = {
   first: '',
   middle: '',
@@ -131,9 +132,30 @@ const thanks = document.getElementById('thanks');
 // ************************* NAVIGATION *************************
 // ************************* NAVIGATION *************************
 // ************************* NAVIGATION *************************
-// navigation buttons - Proceed, Go Back, SUBMIT, & lol/smh
-// have value attribute which corresponds to one 'if' of the conditional
-// which corresponds to specific functionality for each view
+// this project is a Single Page Application (SPA)
+// everything loads at once, user never navigates to a new page
+// each "page" of the questionnaire is a VIEW
+//
+// the navigation buttons hide or show the correct "page" view
+// as the user fills out the questionnaire.
+//
+// navigation buttons - Proceed, Go Back, SUBMIT, & lol/smh each
+// have a value attribute ['proceed', 'proceedMultTextAnswer',
+// 'bipoc', 'proceedOtherAnswer', etc.
+//
+// the long conditional in the handleNavigation function 
+// checks for these values. each value triggers the corresponding
+// functionality for each VIEW.
+//
+// each corresponding conditional code block handles gathering 
+// the questionnaire data - see global variable at top of page 
+// AND makes sure the animations/video/sound run smoothly
+// 
+// classes .hide & .show make view container either display: flex or none.
+//
+// there are other utility functions as necessary 
+// ***************************************************************
+// ***************************************************************
 function handleNavigation(e) {
   let btnClicked = e.currentTarget;
   e.preventDefault(); // i don't think i need this.
@@ -486,7 +508,7 @@ function playAudio(e) {
 // ********************** GOOGLE SPREADSHEET ****************************
 // ********************** GOOGLE SPREADSHEET ****************************
 // This function sumbits data to google spreadsheet
-// solution uses sheet.best - form has to be a formData object
+// form must be a formData object for sheet.best solution 
 function handleFormSubmit(obj) {
   const form = new FormData();
 
@@ -497,8 +519,8 @@ function handleFormSubmit(obj) {
   // ***************************************************
   // ***************************************************
   // ----- CONNECTING QUESTIONAIRE TO GOOGLE SHEET -----
-  // the url in the fetch call to sheet.best https://sheet.best/ 
-  // uses a FREE online service to connect the questionaire
+  // url in the fetch call posts to sheet.best https://sheet.best/ 
+  // a FREE online service to connect the questionaire
   // to a google sheet -- easy to use
   // 
   // the last part of the url 'c30ef.....' 
