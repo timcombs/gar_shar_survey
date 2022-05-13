@@ -493,8 +493,21 @@ function handleFormSubmit(obj) {
   for (var key in obj) {
     form.append(key, obj[key]);
   }
-
-  // now attached to woc google sheet.
+  
+  // ***************************************************
+  // ***************************************************
+  // ----- CONNECTING QUESTIONAIRE TO GOOGLE SHEET -----
+  // the url in the fetch call to sheet.best https://sheet.best/ 
+  // uses a FREE online service to connect the questionaire
+  // to a google sheet -- easy to use
+  // 
+  // the last part of the url 'c30ef.....' 
+  // is the code specific to the connection.
+  //
+  // blog post here shares the details: 
+  // https://www.freecodecamp.org/news/react-and-googlesheets/
+  // ***************************************************
+  // ***************************************************
   fetch('https://sheet.best/api/sheets/c30ef0b5-3c9e-47be-a71a-38bd4a79f432', {
     method: 'POST',
     body: form,
